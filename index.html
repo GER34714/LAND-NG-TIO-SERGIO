@@ -30,6 +30,7 @@
       text-align: center;
       padding: 60px 20px 30px;
       background: linear-gradient(180deg, rgba(0,0,0,0.8), transparent);
+      animation: fadeInUp 1.5s ease forwards;
     }
 
     header img {
@@ -64,6 +65,7 @@
     section {
       text-align: center;
       padding: 40px 20px;
+      animation: fadeInUp 1.5s ease forwards;
     }
 
     .horarios {
@@ -80,6 +82,30 @@
       color: #ddd;
     }
 
+    /* Nueva sección: sobre el lugar */
+    .sobre, .shows {
+      text-align: center;
+      padding: 40px 25px;
+      background: rgba(0,0,0,0.6);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .sobre h3, .shows h3 {
+      color: #ffcc66;
+      text-shadow: 0 0 10px #ff9900;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .sobre p, .shows p {
+      color: #eee;
+      line-height: 1.8;
+      font-size: 1.1em;
+      margin-bottom: 15px;
+    }
+
     footer {
       background: rgba(0,0,0,0.85);
       padding: 20px;
@@ -87,6 +113,7 @@
       color: #aaa;
       font-size: 0.9em;
       border-top: 1px solid rgba(255,255,255,0.1);
+      animation: fadeInUp 1.5s ease forwards;
     }
 
     footer a {
@@ -132,10 +159,6 @@
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    header, section, footer {
-      animation: fadeInUp 1.5s ease forwards;
-    }
   </style>
 </head>
 
@@ -151,12 +174,36 @@
 
   <section>
     <p class="horarios">🎶 Viernes y Sábados: desde las 22:00 hs 🎶</p>
-
     <div class="info">
       <p>📩 info@tiosergio.com.ar</p>
       <p>📞 11 2327-2061</p>
       <p>📍 Av. Pres. Art. Umberto Illia 6829, José C. Paz, Bs. As.</p>
     </div>
+  </section>
+
+  <section class="sobre">
+    <h3>🔥 Bienvenidos a TÍO SERGIO 🔥</h3>
+    <p>
+      El clásico punto de encuentro de la noche en José C. Paz.  
+      Una verdadera bailanta para disfrutar con amigos, buena música, tragos y alegría.  
+      Cada <strong>viernes y sábado desde las 22 hs</strong> te esperamos con shows en vivo de las mejores bandas de cumbia y cuarteto,  
+      luces, sonido profesional y el ambiente más cálido para mayores con toda la energía de la peña argentina.
+    </p>
+    <p>
+      Vení a bailar, cantar y compartir momentos únicos en <strong>“El lugar de los mayores”</strong>.  
+      TÍO SERGIO combina la esencia de la música popular con la diversión de la vieja escuela —  
+      un espacio donde la noche se vive a pleno entre amigos, copas y ritmo.
+    </p>
+  </section>
+
+  <section class="shows">
+    <h3>🎤 Bandas y Artistas en Vivo</h3>
+    <p>
+      Cada fin de semana TÍO SERGIO presenta los mejores grupos de la movida tropical,  
+      con shows de cumbia, cuarteto y ritmos populares que hacen vibrar a José C. Paz.  
+      Seguí nuestras redes para enterarte de la próxima fecha:
+    </p>
+    <p><a href="https://www.instagram.com/tiosergio935/" target="_blank">📸 @tiosergio935</a></p>
   </section>
 
   <footer>
