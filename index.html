@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TÍO SERGIO | El lugar de los mayores</title>
+  <meta name="description" content="TÍO SERGIO - El lugar de los mayores. Bailanta, música, tragos y buena compañía. Viernes y sábados desde las 22:00hs en José C. Paz." />
+  <link rel="icon" type="image/png" href="https://iili.io/KHOiff9.md.png" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(ellipse at center, #1a0f0a 0%, #000 80%);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.8), transparent);
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      color: #ffcc66;
+      text-shadow: 0 0 15px #ffcc66, 0 0 30px #cc6600;
+      font-weight: 700;
+    }
+
+    header h2 {
+      font-size: 1.5em;
+      color: #ffd280;
+      margin-top: 10px;
+      text-shadow: 0 0 8px #cc6600;
+    }
+
+    section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .horarios {
+      font-size: 1.4em;
+      margin-top: 20px;
+      color: #fff;
+      text-shadow: 0 0 10px #ff6600;
+    }
+
+    .info {
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #ddd;
+    }
+
+    footer {
+      background: rgba(0,0,0,0.85);
+      padding: 20px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9em;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer a {
+      color: #00ffff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffcc66;
+    }
+
+    /* Botón flotante WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 15px #25D366;
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-float img {
+      width: 40px;
+      height: 40px;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px #25D366; }
+      50% { box-shadow: 0 0 25px #25D366; }
+      100% { box-shadow: 0 0 10px #25D366; }
+    }
+
+    /* Imagen o video de fondo */
+    .fondo {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://iili.io/d9PZVZ1.md.jpg') center/cover no-repeat;
+      filter: brightness(0.4);
+    }
+
+    /* Animación suave de entrada */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header, section, footer {
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="fondo"></div>
+
+  <header>
+    <h1>TÍO SERGIO</h1>
+    <h2>El lugar de los mayores</h2>
+  </header>
+
+  <section>
+    <p class="horarios">🎶 Viernes y Sábados: desde las 22:00 hs 🎶</p>
+
+    <div class="info">
+      <p>📩 info@tiosergio.com.ar</p>
+      <p>📞 11 2327-2061</p>
+      <p>📍 Av. Pres. Art. Umberto Illia 6829, José C. Paz, Bs. As.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 TÍO SERGIO | Todos los derechos reservados.<br>
+    Diseñado por <a href="https://ciborg347.onrender.com" target="_blank">Ciborg 347™</a>
+  </footer>
+
+  <a href="https://wa.me/541123272061" target="_blank" class="whatsapp-float">
+    <img src="https://iili.io/Jq2zv42.png" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
