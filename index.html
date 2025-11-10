@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TÍO SERGIO | El lugar de los mayores</title>
   <meta name="description" content="TÍO SERGIO - El lugar de los mayores. Bailanta, música, tragos y buena compañía. Viernes y sábados desde las 22:00hs en José C. Paz." />
-  <link rel="icon" type="image/png" href="https://iili.io/KHOiff9.md.png" />
+  <link rel="icon" type="image/png" href="https://iili.io/KmlrQHX.md.jpg" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,14 +16,39 @@
       overflow-x: hidden;
     }
 
+    .fondo {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://iili.io/d9PZVZ1.md.jpg') center/cover no-repeat;
+      filter: brightness(0.4);
+    }
+
     header {
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 60px 20px 30px;
       background: linear-gradient(180deg, rgba(0,0,0,0.8), transparent);
     }
 
+    header img {
+      width: 220px;
+      max-width: 80%;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(255, 204, 102, 0.6);
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px rgba(255,204,102,0.3); }
+      50% { box-shadow: 0 0 30px rgba(255,204,102,0.8); }
+      100% { box-shadow: 0 0 10px rgba(255,204,102,0.3); }
+    }
+
     header h1 {
-      font-size: 3.5em;
+      font-size: 3.2em;
       color: #ffcc66;
       text-shadow: 0 0 15px #ffcc66, 0 0 30px #cc6600;
       font-weight: 700;
@@ -32,7 +57,7 @@
     header h2 {
       font-size: 1.5em;
       color: #ffd280;
-      margin-top: 10px;
+      margin-top: 8px;
       text-shadow: 0 0 8px #cc6600;
     }
 
@@ -103,18 +128,6 @@
       100% { box-shadow: 0 0 10px #25D366; }
     }
 
-    /* Imagen o video de fondo */
-    .fondo {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: url('https://iili.io/d9PZVZ1.md.jpg') center/cover no-repeat;
-      filter: brightness(0.4);
-    }
-
-    /* Animación suave de entrada */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
@@ -123,14 +136,15 @@
     header, section, footer {
       animation: fadeInUp 1.5s ease forwards;
     }
-
   </style>
 </head>
+
 <body>
 
   <div class="fondo"></div>
 
   <header>
+    <img src="https://iili.io/KmlrQHX.md.jpg" alt="Logo Tío Sergio">
     <h1>TÍO SERGIO</h1>
     <h2>El lugar de los mayores</h2>
   </header>
