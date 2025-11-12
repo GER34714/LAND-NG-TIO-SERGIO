@@ -6,8 +6,8 @@
   <title>TÍO SERGIO | El lugar de los mayores</title>
   <meta name="description" content="TÍO SERGIO - El lugar de los mayores. Bailanta, música, tragos y buena compañía. Viernes y sábados desde las 22:00hs en José C. Paz." />
   <link rel="icon" type="image/png" href="https://iili.io/KmWWSnV.md.webp" />
+  <link rel="preload" as="image" href="https://iili.io/KpcJDEG.md.png">
   <link rel="preload" as="video" href="Unconfirmed_download_https___www.instagram.com_reel_DQ7LHnKEb2A_(MP4).webm" type="video/webm" />
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { scroll-behavior: smooth; }
@@ -30,9 +30,15 @@
 
     header {
       text-align: center;
-      padding: 60px 20px 30px;
+      padding: 40px 20px 30px;
       background: linear-gradient(180deg, rgba(0,0,0,0.85), transparent);
       animation: fadeInUp 1s ease forwards;
+    }
+
+    header img.logo-principal {
+      width: 180px;
+      max-width: 50%;
+      margin-bottom: 15px;
     }
 
     header h1 {
@@ -40,7 +46,7 @@
       color: #ffcc66;
       text-shadow: 0 0 20px #ffcc66, 0 0 40px #cc6600;
       font-weight: 800;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     header h2 {
@@ -93,7 +99,6 @@
       margin-bottom: 10px;
     }
 
-    /* 🔹 ANFITRIÓN */
     .anfitrion {
       text-align: center;
       padding: 60px 20px 100px;
@@ -188,6 +193,7 @@
   <div class="fondo"></div>
 
   <header>
+    <img class="logo-principal" src="https://iili.io/KpcJDEG.md.png" alt="Logo TÍO SERGIO">
     <h1>TÍO SERGIO</h1>
     <h2>El lugar de los mayores</h2>
   </header>
@@ -215,7 +221,6 @@
     <p><a href="https://www.instagram.com/tiosergio935/" target="_blank">📸 @tiosergio935</a></p>
   </section>
 
-  <!-- 🔹 VIDEO CON CARGA ADELANTADA -->
   <section class="anfitrion">
     <h3>ATENDIDO POR SU ANFITRIÓN</h3>
     <video preload="auto" muted loop playsinline class="logo-video" id="videoAnfitrion">
@@ -237,7 +242,7 @@
     document.addEventListener("DOMContentLoaded", () => {
       const video = document.getElementById("videoAnfitrion");
       video.classList.add("loaded");
-      video.play().catch(() => {}); // Inicia precarga silenciosa
+      video.play().catch(() => {});
     });
   </script>
 
