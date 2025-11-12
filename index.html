@@ -7,7 +7,7 @@
   <meta name="description" content="TÍO SERGIO - El lugar de los mayores. Bailanta, música, tragos y buena compañía. Viernes y sábados desde las 22:00hs en José C. Paz." />
   <link rel="icon" type="image/png" href="https://iili.io/KmWWSnV.md.webp" />
   <link rel="preload" as="image" href="https://iili.io/KpcJDEG.md.png">
-  <link rel="preload" as="video" href="Unconfirmed_download_https___www.instagram.com_reel_DQ7LHnKEb2A_(MP4).webm" type="video/webm" />
+  <link rel="preload" as="image" href="https://iili.io/KpcsxCN.md.jpg">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html,body{scroll-behavior:smooth}
@@ -31,8 +31,7 @@
     .logo-container{position:relative;display:inline-block;margin-top:50px;animation:floatLogo 6s ease-in-out infinite}
     .logo-principal{
       width:clamp(260px,55vw,440px);border-radius:50%;
-      animation:glowShift 6s infinite ease-in-out;
-      filter:drop-shadow(0 0 25px #fff);position:relative;z-index:2;
+      animation:glowShift 6s infinite ease-in-out;filter:drop-shadow(0 0 25px #fff);position:relative;z-index:2;
     }
     @keyframes glowShift{
       0%{filter:drop-shadow(0 0 20px #ffcc66) drop-shadow(0 0 40px #ff00ff)}
@@ -52,17 +51,19 @@
       text-shadow:0 0 8px #ffcc66,0 0 15px #ff00ff,0 0 25px #00ffff;
     }
     section{text-align:center;padding:40px 20px;max-width:900px;margin:auto}
+    .horarios{
+      font-size:1.4em;margin-top:15px;color:#fff;text-shadow:0 0 15px #ff6600,0 0 25px #ffcc66;
+    }
+    .info{
+      margin-top:25px;font-size:1.1em;color:#ddd;
+    }
     .bloque{
-      padding:45px 25px;background:rgba(0,0,0,0.65);
-      border-radius:15px;margin:30px 10px;
-      backdrop-filter:blur(5px);box-shadow:0 0 25px rgba(255,255,255,0.05);
+      padding:45px 25px;background:rgba(0,0,0,0.65);border-radius:15px;margin:30px 10px;backdrop-filter:blur(5px);box-shadow:0 0 25px rgba(255,255,255,0.05);
     }
     .bloque h3{color:#ffcc66;text-shadow:0 0 10px #ff00ff,0 0 20px #00ffff;font-size:clamp(1.6em,4vw,2.2em);margin-bottom:10px}
     .bloque p{color:#eee;font-size:1.15em;margin-bottom:12px}
-    /* 🎥 Video anfitrión */
     .anfitrion{
-      text-align:center;
-      padding:80px 20px 100px;
+      text-align:center;padding:80px 20px 100px;
       background:linear-gradient(180deg,rgba(0,0,0,0.85),rgba(0,0,0,0.4));
       position:relative;
     }
@@ -74,26 +75,22 @@
       box-shadow:0 0 25px rgba(255,204,102,0.6);
     }
     .overlay-text{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      padding:15px 0;
+      position:absolute;top:0;left:0;width:100%;padding:15px 0;
       background:rgba(0,0,0,0.5);
       font-size:clamp(1.3em,4vw,1.8em);
       font-weight:700;
       color:#ffcc66;
       text-shadow:0 0 15px #ff00ff,0 0 25px #00ffff;
       letter-spacing:2px;
+      z-index:2;
     }
-    .logo-video{
+    .img-anfitrion{
       width:min(90%,420px);
       border-radius:15px;
-      opacity:0;
-      transition:opacity 1s ease-in-out;
       display:block;
+      transition:opacity 1s ease-in-out;
+      opacity:1;
     }
-    .logo-video.loaded{opacity:1;animation:glowShift 6s infinite ease-in-out}
     .contacto-final{
       text-align:center;padding:70px 20px;
       background:rgba(0,0,0,0.75);
@@ -123,7 +120,8 @@
       header{padding:40px 10px 20px}
       .logo-principal{width:280px}
       .slogan-circular{width:340px;height:340px}
-      .slogan-circular span{font-size:.9em;transform-origin:0 170px}
+      .slogan-circular span{font-size:0.9em;transform-origin:0 170px}
+      .overlay-text{font-size:1.2em}
     }
   </style>
 </head>
@@ -138,22 +136,24 @@
     </div>
   </header>
 
+  <section class="horarios">🎶 Viernes y Sábados desde las 22:00 hs 🎶</section>
+
+  <section class="info">
+    <p>📩 info@tiosergio.com.ar</p>
+    <p>📞 11 2327-2061</p>
+    <p>📍 Av. Pres. Art. Umberto Illia 6829, José C. Paz, Bs. As.</p>
+  </section>
+
   <section class="bloque">
-    <h3>🔥 La noche es de los mayores 🔥</h3>
-    <p>El clásico de José C. Paz donde la música nunca falta.</p>
-    <p>💃 Cumbia • Cuarteto • Tragos • Amigos • Buena vibra 🍻</p>
-    <p>Ambiente seguro, sonido profesional y shows que hacen historia.</p>
+    <h3>🎤 Bandas en Vivo</h3>
+    <p>Sumate a la movida tropical más potente: en vivo cada viernes y sábado grandes grupos que hacen que la pista explote.</p>
+    <p>Cumbia • Cuarteto • Tragos • Buena vibra • Amigos</p>
   </section>
 
   <section class="anfitrion">
     <div class="video-container">
-      <div class="overlay-text">ATENDIDO POR SU ANFITRIÓN</div>
-      <video preload="auto" muted loop playsinline fetchpriority="high"
-        class="logo-video" id="videoAnfitrion"
-        poster="https://iili.io/KpcJDEG.md.png">
-        <source src="Unconfirmed_download_https___www.instagram.com_reel_DQ7LHnKEb2A_(MP4).webm" type="video/webm">
-        Tu navegador no soporta video.
-      </video>
+      <div class="overlay-text">ATENDIDO POR SU ANFITRIÓN, EL GRAN TÍO SERGIO</div>
+      <img class="img-anfitrion" src="https://iili.io/KpcsxCN.md.jpg" alt="Anfitrión Tío Sergio">
     </div>
   </section>
 
@@ -177,7 +177,6 @@
   </footer>
 
   <script>
-    // Texto circular
     const texto="EL LUGAR DE LOS MAYORES ✦ ";
     const contenedor=document.getElementById("textoCircular");
     for(let i=0;i<texto.length;i++){
@@ -186,12 +185,7 @@
       letra.style.transform=`rotate(${(i*360)/texto.length}deg)`;
       contenedor.appendChild(letra);
     }
-    // Video
-    document.addEventListener("DOMContentLoaded",()=>{
-      const video=document.getElementById("videoAnfitrion");
-      video.classList.add("loaded");
-      video.play().catch(()=>{});
-    });
   </script>
+
 </body>
 </html>
