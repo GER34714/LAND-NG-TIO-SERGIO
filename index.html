@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TÍO SERGIO | El lugar de los mayores</title>
-  <meta name="description" content="Bailanta TÍO SERGIO - música, tragos y diversión. Viernes y sábados desde las 22:00hs en José C. Paz. ¡Shows, amigos y buena vibra en cada noche!" />
+  <meta name="description" content="TÍO SERGIO - El lugar de los mayores. Bailanta, música, tragos y buena compañía. Viernes y sábados desde las 22:00hs en José C. Paz." />
   <link rel="icon" type="image/png" href="https://iili.io/KmWWSnV.md.webp" />
-  <link rel="preload" as="image" href="https://iili.io/KpcJDEG.md.png">
   <link rel="preload" as="image" href="https://iili.io/KpcsxCN.md.jpg">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
@@ -14,36 +13,35 @@
     body{
       font-family:'Poppins',sans-serif;
       background:radial-gradient(ellipse at center,#1a0f0a 0%,#000 85%);
-      color:#fff;line-height:1.5;
+      color:#fff;line-height:1.6;
     }
     .fondo{
       position:fixed;inset:0;z-index:-1;
       background:url('https://iili.io/KmM0LyN.md.jpg') center/cover no-repeat;
       filter:brightness(0.7);
-      animation:reflejo 12s ease-in-out infinite alternate;
+      animation:reflejo 10s ease-in-out infinite alternate;
     }
     @keyframes reflejo{
       0%{filter:brightness(0.7)saturate(1.1)}
-      50%{filter:brightness(0.85)saturate(1.3)}
+      50%{filter:brightness(0.85)saturate(1.4)}
       100%{filter:brightness(0.7)saturate(1.1)}
     }
+
     header{text-align:center;padding:80px 20px 40px;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent)}
-    .logo-container{position:relative;display:inline-block;margin-top:50px;animation:floatLogo 6s ease-in-out infinite}
+    .logo-container{position:relative;display:inline-block;animation:floatLogo 6s ease-in-out infinite}
     .logo-principal{
       width:clamp(260px,55vw,440px);
       border-radius:50%;
       animation:glowShift 6s infinite ease-in-out;
-      filter:drop-shadow(0 0 25px #fff);
-      position:relative;z-index:2;
+      filter:drop-shadow(0 0 25px #fff);position:relative;z-index:2;
     }
     @keyframes glowShift{
-      0%{filter:drop-shadow(0 0 20px #ffcc66) drop-shadow(0 0 40px #ff00ff)}
-      25%{filter:drop-shadow(0 0 25px #00ffff) drop-shadow(0 0 50px #ffcc66)}
-      50%{filter:drop-shadow(0 0 30px #ff00ff) drop-shadow(0 0 60px #00ffff)}
-      75%{filter:drop-shadow(0 0 25px #ffcc66) drop-shadow(0 0 50px #ff00ff)}
-      100%{filter:drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 40px #ffcc66)}
+      0%{filter:drop-shadow(0 0 25px #ff00ff) drop-shadow(0 0 45px #00ffff)}
+      50%{filter:drop-shadow(0 0 35px #ffcc66) drop-shadow(0 0 60px #00ffff)}
+      100%{filter:drop-shadow(0 0 25px #00ffff) drop-shadow(0 0 45px #ff00ff)}
     }
     @keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
     .slogan-circular{
       position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
       width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:1;
@@ -51,71 +49,64 @@
     .slogan-circular span{
       position:absolute;left:50%;top:0;transform-origin:0 250px;
       font-size:1.1em;font-weight:600;color:#fff;
-      text-shadow:0 0 8px #ffcc66,0 0 15px #ff00ff,0 0 25px #00ffff;
+      text-shadow:0 0 10px #ffcc66,0 0 20px #ff00ff,0 0 30px #00ffff;
     }
+
     section{text-align:center;padding:40px 20px;max-width:900px;margin:auto}
+    .horarios{
+      font-size:1.4em;margin-top:15px;color:#fff;
+      text-shadow:0 0 15px #ff6600,0 0 25px #ffcc66;
+    }
+
     .bloque{
-      padding:50px 30px;background:rgba(0,0,0,0.6);
-      border-radius:15px;margin:40px 10px;
-      backdrop-filter:blur(6px);
+      padding:45px 25px;background:rgba(0,0,0,0.65);
+      border-radius:15px;margin:30px 10px;
+      backdrop-filter:blur(5px);
       box-shadow:0 0 25px rgba(255,255,255,0.05);
-      animation:fadeInUp 1.2s ease;
     }
     .bloque h3{
       color:#ffcc66;text-shadow:0 0 10px #ff00ff,0 0 20px #00ffff;
-      font-size:clamp(1.6em,4vw,2.2em);
-      margin-bottom:15px;
+      font-size:clamp(1.6em,4vw,2.2em);margin-bottom:10px;
     }
-    .bloque p{
-      color:#eee;font-size:1.15em;margin-bottom:12px;line-height:1.8;
-    }
-    @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(30px)}
-      to{opacity:1;transform:translateY(0)}
-    }
+    .bloque p{color:#eee;font-size:1.15em;margin-bottom:12px}
+
     .anfitrion{
       text-align:center;
       padding:80px 20px;
       background:linear-gradient(180deg,rgba(0,0,0,0.85),rgba(0,0,0,0.4));
-      position:relative;
     }
     .titulo-anfitrion{
       font-size:clamp(1.4em,4vw,2em);
       font-weight:700;
       margin-bottom:25px;
       color:#ffcc66;
-      text-shadow:0 0 20px #ff00ff,0 0 35px #00ffff;
-      letter-spacing:1.5px;
-      animation:textGlow 3s infinite ease-in-out;
-    }
-    @keyframes textGlow{
-      0%,100%{text-shadow:0 0 15px #ffcc66,0 0 35px #ff00ff}
-      50%{text-shadow:0 0 25px #00ffff,0 0 45px #ffcc66}
+      text-shadow:0 0 15px #ff00ff,0 0 30px #00ffff;
+      letter-spacing:2px;
     }
     .img-anfitrion{
-      width:min(90%,600px);
+      width:min(90%,650px);
       border-radius:15px;
       display:block;
       margin:auto;
-      animation:multiGlow 6s infinite ease-in-out;
+      box-shadow:0 0 35px #ff00ff, 0 0 65px #00ffff, 0 0 85px #ffcc66;
+      animation:pulsoMulti 6s infinite ease-in-out;
     }
-    @keyframes multiGlow{
-      0%{filter:drop-shadow(0 0 10px #ffcc66) drop-shadow(0 0 25px #ff00ff);}
-      50%{filter:drop-shadow(0 0 25px #00ffff) drop-shadow(0 0 40px #ffcc66);}
-      100%{filter:drop-shadow(0 0 10px #ff00ff) drop-shadow(0 0 25px #00ffff);}
+    @keyframes pulsoMulti{
+      0%{box-shadow:0 0 30px #ff00ff,0 0 60px #00ffff}
+      50%{box-shadow:0 0 50px #ffcc66,0 0 90px #00ffff,0 0 120px #ff00ff}
+      100%{box-shadow:0 0 30px #00ffff,0 0 60px #ff00ff}
     }
+
     .contacto-final{
       text-align:center;padding:70px 20px;
-      background:rgba(0,0,0,0.8);
+      background:rgba(0,0,0,0.75);
       border-top:1px solid rgba(255,255,255,0.1);
       box-shadow:0 0 30px rgba(255,255,255,0.05);
     }
     .contacto-final p{
       font-size:1.1em;margin:8px 0;color:#eee;text-shadow:0 0 8px #ffcc66;
     }
-    .redes-local{
-      display:flex;justify-content:center;gap:35px;margin-top:25px;
-    }
+    .redes-local{display:flex;justify-content:center;gap:35px;margin-top:20px}
     .redes-local a img{
       width:55px;height:55px;transition:all .3s ease;
       filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));
@@ -124,6 +115,22 @@
       transform:scale(1.15);
       filter:drop-shadow(0 0 15px #00ffff) drop-shadow(0 0 25px #ff00ff);
     }
+
+    .final-fomo{
+      text-align:center;
+      padding:60px 20px;
+      background:linear-gradient(180deg,rgba(0,0,0,0.9),rgba(0,0,0,0.7));
+      font-size:1.5em;
+      color:#ffcc66;
+      text-shadow:0 0 25px #ff00ff,0 0 45px #00ffff;
+      font-weight:600;
+      animation:brillaFomo 3s infinite ease-in-out;
+    }
+    @keyframes brillaFomo{
+      0%,100%{text-shadow:0 0 25px #ffcc66,0 0 45px #00ffff;}
+      50%{text-shadow:0 0 40px #ff00ff,0 0 60px #ffcc66;}
+    }
+
     footer{
       background:rgba(0,0,0,0.9);
       padding:20px 10px;text-align:center;color:#aaa;font-size:.9em;
@@ -131,10 +138,14 @@
     }
     footer a{color:#00ffff;text-decoration:none;transition:.3s}
     footer a:hover{color:#ffcc66}
+
     @media(max-width:600px){
+      header{padding:40px 10px 20px}
       .logo-principal{width:280px}
       .slogan-circular{width:340px;height:340px}
       .slogan-circular span{font-size:.9em;transform-origin:0 170px}
+      .titulo-anfitrion{font-size:1.3em}
+      .final-fomo{font-size:1.2em}
     }
   </style>
 </head>
@@ -149,15 +160,18 @@
     </div>
   </header>
 
+  <section class="horarios">🎶 Viernes y Sábados desde las 22:00 hs 🎶</section>
+
   <section class="bloque">
-    <h3>🔥 El lugar donde la noche cobra vida 🔥</h3>
-    <p>💃 Cumbia, Cuarteto y Ritmos Tropicales en vivo cada fin de semana.</p>
-    <p>🍹 Tragos, luces, amigos, y un ambiente seguro para disfrutar sin límites.</p>
-    <p>🎤 Grandes bandas, buena vibra y la energía única del <strong>TÍO SERGIO™</strong>.</p>
+    <h3>🔥 Donde la noche cobra vida 🔥</h3>
+    <p>El clásico de José C. Paz donde los mayores disfrutan la mejor movida tropical.  
+    Música, luces, tragos, amigos y una energía que no se compara con nada.  
+    <strong>Cumbia, Cuarteto y shows en vivo</strong> cada fin de semana.  
+    ¡Vení a vivir la verdadera fiesta popular! 💃🎤🍻</p>
   </section>
 
   <section class="anfitrion">
-    <h3 class="titulo-anfitrion">ATENDIDO POR SU ANFITRIÓN, EL GRAN TÍO SERGIO</h3>
+    <h3 class="titulo-anfitrion">Donde la noche cobra vida 🌙✨</h3>
     <img class="img-anfitrion" src="https://iili.io/KpcsxCN.md.jpg" alt="Anfitrión Tío Sergio">
   </section>
 
@@ -175,6 +189,11 @@
     </div>
   </section>
 
+  <section class="final-fomo">
+    🔥 ¡Te esperamos este fin de semana en TÍO SERGIO!  
+    La noche más esperada está por comenzar... 💃🎶
+  </section>
+
   <footer>
     © 2025 TÍO SERGIO | Todos los derechos reservados.<br>
     Diseñado por <a href="https://ciborg347.onrender.com" target="_blank">Ciborg 347™</a>
@@ -183,6 +202,7 @@
   <script>
     const texto = "EL LUGAR DE LOS MAYORES ✦ ";
     const contenedor = document.getElementById("textoCircular");
+    const mitad = Math.floor(texto.length / 2);
     for (let i = 0; i < texto.length; i++) {
       const letra = document.createElement("span");
       letra.innerText = texto[i];
