@@ -13,7 +13,7 @@
     body{
       font-family:'Poppins',sans-serif;
       background:radial-gradient(ellipse at center,#1a0f0a 0%,#000 85%);
-      color:#fff;line-height:1.6;
+      color:#fff;line-height:1.6;text-align:center;
     }
     .fondo{
       position:fixed;inset:0;z-index:-1;
@@ -27,14 +27,29 @@
       100%{filter:brightness(0.7)saturate(1.1)}
     }
 
-    header{text-align:center;padding:80px 20px 40px;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent)}
-    .logo-container{position:relative;display:inline-block;animation:floatLogo 6s ease-in-out infinite}
+    header{
+      display:flex;flex-direction:column;align-items:center;
+      justify-content:center;text-align:center;
+      padding:80px 20px 40px;
+      background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent);
+    }
+
+    .logo-container{
+      position:relative;
+      display:inline-block;
+      margin-top:50px;
+      animation:floatLogo 6s ease-in-out infinite;
+    }
+
     .logo-principal{
       width:clamp(260px,55vw,440px);
       border-radius:50%;
       animation:glowShift 6s infinite ease-in-out;
-      filter:drop-shadow(0 0 25px #fff);position:relative;z-index:2;
+      filter:drop-shadow(0 0 25px #fff);
+      position:relative;
+      z-index:2;
     }
+
     @keyframes glowShift{
       0%{filter:drop-shadow(0 0 25px #ff00ff) drop-shadow(0 0 45px #00ffff)}
       50%{filter:drop-shadow(0 0 35px #ffcc66) drop-shadow(0 0 60px #00ffff)}
@@ -43,32 +58,47 @@
     @keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
     .slogan-circular{
-      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:1;
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:500px;height:500px;
+      border-radius:50%;
+      pointer-events:none;
+      z-index:1;
     }
     .slogan-circular span{
-      position:absolute;left:50%;top:0;transform-origin:0 250px;
+      position:absolute;
+      left:50%;top:0;
+      transform-origin:0 250px;
       font-size:1.1em;font-weight:600;color:#fff;
       text-shadow:0 0 10px #ffcc66,0 0 20px #ff00ff,0 0 30px #00ffff;
     }
 
-    section{text-align:center;padding:40px 20px;max-width:900px;margin:auto}
+    section{text-align:center;padding:40px 20px;max-width:900px;margin:0 auto;}
     .horarios{
       font-size:1.4em;margin-top:15px;color:#fff;
       text-shadow:0 0 15px #ff6600,0 0 25px #ffcc66;
     }
 
     .bloque{
-      padding:45px 25px;background:rgba(0,0,0,0.65);
-      border-radius:15px;margin:30px 10px;
+      padding:45px 25px;
+      background:rgba(0,0,0,0.65);
+      border-radius:15px;margin:40px auto;
       backdrop-filter:blur(5px);
       box-shadow:0 0 25px rgba(255,255,255,0.05);
     }
     .bloque h3{
-      color:#ffcc66;text-shadow:0 0 10px #ff00ff,0 0 20px #00ffff;
-      font-size:clamp(1.6em,4vw,2.2em);margin-bottom:10px;
+      color:#ffcc66;
+      text-shadow:0 0 10px #ff00ff,0 0 20px #00ffff;
+      font-size:clamp(1.6em,4vw,2.2em);
+      margin-bottom:15px;
     }
-    .bloque p{color:#eee;font-size:1.15em;margin-bottom:12px}
+    .bloque p{
+      color:#eee;
+      font-size:1.15em;
+      margin-bottom:12px;
+      line-height:1.7;
+    }
 
     .anfitrion{
       text-align:center;
@@ -140,7 +170,6 @@
     footer a:hover{color:#ffcc66}
 
     @media(max-width:600px){
-      header{padding:40px 10px 20px}
       .logo-principal{width:280px}
       .slogan-circular{width:340px;height:340px}
       .slogan-circular span{font-size:.9em;transform-origin:0 170px}
@@ -163,15 +192,14 @@
   <section class="horarios">🎶 Viernes y Sábados desde las 22:00 hs 🎶</section>
 
   <section class="bloque">
-    <h3>🔥 Donde la noche cobra vida 🔥</h3>
-    <p>El clásico de José C. Paz donde los mayores disfrutan la mejor movida tropical.  
-    Música, luces, tragos, amigos y una energía que no se compara con nada.  
-    <strong>Cumbia, Cuarteto y shows en vivo</strong> cada fin de semana.  
-    ¡Vení a vivir la verdadera fiesta popular! 💃🎤🍻</p>
+    <h3>🔥 La noche es de los mayores 🔥</h3>
+    <p>💃 Música en vivo • Cuarteto • Cumbia • Shows especiales</p>
+    <p>🍸 Tragos • Amigos • Buena vibra • Diversión asegurada</p>
+    <p>🎤 Sonido profesional • Luces y ambiente tropical</p>
   </section>
 
   <section class="anfitrion">
-    <h3 class="titulo-anfitrion">Donde la noche cobra vida 🌙✨</h3>
+    <h3 class="titulo-anfitrion">ATENDIDO POR SU ANFITRIÓN, EL GRAN...</h3>
     <img class="img-anfitrion" src="https://iili.io/KpcsxCN.md.jpg" alt="Anfitrión Tío Sergio">
   </section>
 
@@ -202,7 +230,6 @@
   <script>
     const texto = "EL LUGAR DE LOS MAYORES ✦ ";
     const contenedor = document.getElementById("textoCircular");
-    const mitad = Math.floor(texto.length / 2);
     for (let i = 0; i < texto.length; i++) {
       const letra = document.createElement("span");
       letra.innerText = texto[i];
