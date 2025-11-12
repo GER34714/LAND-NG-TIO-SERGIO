@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TÍO SERGIO | El lugar de los mayores</title>
-  <meta name="description" content="TÍO SERGIO - El lugar de los mayores. Bailanta, música, tragos y buena compañía. Viernes y sábados desde las 22:00hs en José C. Paz." />
+  <meta name="description" content="Bailanta TÍO SERGIO - música, tragos y diversión. Viernes y sábados desde las 22:00hs en José C. Paz. ¡Shows, amigos y buena vibra en cada noche!" />
   <link rel="icon" type="image/png" href="https://iili.io/KmWWSnV.md.webp" />
   <link rel="preload" as="image" href="https://iili.io/KpcJDEG.md.png">
   <link rel="preload" as="image" href="https://iili.io/KpcsxCN.md.jpg">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    html,body{scroll-behavior:smooth}
+    html,body{scroll-behavior:smooth;overflow-x:hidden}
     body{
       font-family:'Poppins',sans-serif;
       background:radial-gradient(ellipse at center,#1a0f0a 0%,#000 85%);
-      color:#fff;overflow-x:hidden;line-height:1.5;
+      color:#fff;line-height:1.5;
     }
     .fondo{
       position:fixed;inset:0;z-index:-1;
@@ -30,8 +30,11 @@
     header{text-align:center;padding:80px 20px 40px;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent)}
     .logo-container{position:relative;display:inline-block;margin-top:50px;animation:floatLogo 6s ease-in-out infinite}
     .logo-principal{
-      width:clamp(260px,55vw,440px);border-radius:50%;
-      animation:glowShift 6s infinite ease-in-out;filter:drop-shadow(0 0 25px #fff);position:relative;z-index:2;
+      width:clamp(260px,55vw,440px);
+      border-radius:50%;
+      animation:glowShift 6s infinite ease-in-out;
+      filter:drop-shadow(0 0 25px #fff);
+      position:relative;z-index:2;
     }
     @keyframes glowShift{
       0%{filter:drop-shadow(0 0 20px #ffcc66) drop-shadow(0 0 40px #ff00ff)}
@@ -51,56 +54,68 @@
       text-shadow:0 0 8px #ffcc66,0 0 15px #ff00ff,0 0 25px #00ffff;
     }
     section{text-align:center;padding:40px 20px;max-width:900px;margin:auto}
-    .horarios{
-      font-size:1.4em;margin-top:15px;color:#fff;text-shadow:0 0 15px #ff6600,0 0 25px #ffcc66;
-    }
-    .info{
-      margin-top:25px;font-size:1.1em;color:#ddd;
-    }
     .bloque{
-      padding:45px 25px;background:rgba(0,0,0,0.65);border-radius:15px;margin:30px 10px;backdrop-filter:blur(5px);box-shadow:0 0 25px rgba(255,255,255,0.05);
+      padding:50px 30px;background:rgba(0,0,0,0.6);
+      border-radius:15px;margin:40px 10px;
+      backdrop-filter:blur(6px);
+      box-shadow:0 0 25px rgba(255,255,255,0.05);
+      animation:fadeInUp 1.2s ease;
     }
-    .bloque h3{color:#ffcc66;text-shadow:0 0 10px #ff00ff,0 0 20px #00ffff;font-size:clamp(1.6em,4vw,2.2em);margin-bottom:10px}
-    .bloque p{color:#eee;font-size:1.15em;margin-bottom:12px}
+    .bloque h3{
+      color:#ffcc66;text-shadow:0 0 10px #ff00ff,0 0 20px #00ffff;
+      font-size:clamp(1.6em,4vw,2.2em);
+      margin-bottom:15px;
+    }
+    .bloque p{
+      color:#eee;font-size:1.15em;margin-bottom:12px;line-height:1.8;
+    }
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
     .anfitrion{
-      text-align:center;padding:80px 20px 100px;
+      text-align:center;
+      padding:80px 20px;
       background:linear-gradient(180deg,rgba(0,0,0,0.85),rgba(0,0,0,0.4));
       position:relative;
     }
-    .video-container{
-      position:relative;
-      display:inline-block;
-      border-radius:15px;
-      overflow:hidden;
-      box-shadow:0 0 25px rgba(255,204,102,0.6);
-    }
-    .overlay-text{
-      position:absolute;top:0;left:0;width:100%;padding:15px 0;
-      background:rgba(0,0,0,0.5);
-      font-size:clamp(1.3em,4vw,1.8em);
+    .titulo-anfitrion{
+      font-size:clamp(1.4em,4vw,2em);
       font-weight:700;
+      margin-bottom:25px;
       color:#ffcc66;
-      text-shadow:0 0 15px #ff00ff,0 0 25px #00ffff;
-      letter-spacing:2px;
-      z-index:2;
+      text-shadow:0 0 20px #ff00ff,0 0 35px #00ffff;
+      letter-spacing:1.5px;
+      animation:textGlow 3s infinite ease-in-out;
+    }
+    @keyframes textGlow{
+      0%,100%{text-shadow:0 0 15px #ffcc66,0 0 35px #ff00ff}
+      50%{text-shadow:0 0 25px #00ffff,0 0 45px #ffcc66}
     }
     .img-anfitrion{
-      width:min(90%,420px);
+      width:min(90%,600px);
       border-radius:15px;
       display:block;
-      transition:opacity 1s ease-in-out;
-      opacity:1;
+      margin:auto;
+      animation:multiGlow 6s infinite ease-in-out;
+    }
+    @keyframes multiGlow{
+      0%{filter:drop-shadow(0 0 10px #ffcc66) drop-shadow(0 0 25px #ff00ff);}
+      50%{filter:drop-shadow(0 0 25px #00ffff) drop-shadow(0 0 40px #ffcc66);}
+      100%{filter:drop-shadow(0 0 10px #ff00ff) drop-shadow(0 0 25px #00ffff);}
     }
     .contacto-final{
       text-align:center;padding:70px 20px;
-      background:rgba(0,0,0,0.75);
+      background:rgba(0,0,0,0.8);
       border-top:1px solid rgba(255,255,255,0.1);
       box-shadow:0 0 30px rgba(255,255,255,0.05);
     }
     .contacto-final p{
       font-size:1.1em;margin:8px 0;color:#eee;text-shadow:0 0 8px #ffcc66;
     }
-    .redes-local{display:flex;justify-content:center;gap:35px;margin-top:20px}
+    .redes-local{
+      display:flex;justify-content:center;gap:35px;margin-top:25px;
+    }
     .redes-local a img{
       width:55px;height:55px;transition:all .3s ease;
       filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));
@@ -117,11 +132,9 @@
     footer a{color:#00ffff;text-decoration:none;transition:.3s}
     footer a:hover{color:#ffcc66}
     @media(max-width:600px){
-      header{padding:40px 10px 20px}
       .logo-principal{width:280px}
       .slogan-circular{width:340px;height:340px}
-      .slogan-circular span{font-size:0.9em;transform-origin:0 170px}
-      .overlay-text{font-size:1.2em}
+      .slogan-circular span{font-size:.9em;transform-origin:0 170px}
     }
   </style>
 </head>
@@ -136,25 +149,16 @@
     </div>
   </header>
 
-  <section class="horarios">🎶 Viernes y Sábados desde las 22:00 hs 🎶</section>
-
-  <section class="info">
-    <p>📩 info@tiosergio.com.ar</p>
-    <p>📞 11 2327-2061</p>
-    <p>📍 Av. Pres. Art. Umberto Illia 6829, José C. Paz, Bs. As.</p>
-  </section>
-
   <section class="bloque">
-    <h3>🎤 Bandas en Vivo</h3>
-    <p>Sumate a la movida tropical más potente: en vivo cada viernes y sábado grandes grupos que hacen que la pista explote.</p>
-    <p>Cumbia • Cuarteto • Tragos • Buena vibra • Amigos</p>
+    <h3>🔥 El lugar donde la noche cobra vida 🔥</h3>
+    <p>💃 Cumbia, Cuarteto y Ritmos Tropicales en vivo cada fin de semana.</p>
+    <p>🍹 Tragos, luces, amigos, y un ambiente seguro para disfrutar sin límites.</p>
+    <p>🎤 Grandes bandas, buena vibra y la energía única del <strong>TÍO SERGIO™</strong>.</p>
   </section>
 
   <section class="anfitrion">
-    <div class="video-container">
-      <div class="overlay-text">ATENDIDO POR SU ANFITRIÓN, EL GRAN TÍO SERGIO</div>
-      <img class="img-anfitrion" src="https://iili.io/KpcsxCN.md.jpg" alt="Anfitrión Tío Sergio">
-    </div>
+    <h3 class="titulo-anfitrion">ATENDIDO POR SU ANFITRIÓN, EL GRAN TÍO SERGIO</h3>
+    <img class="img-anfitrion" src="https://iili.io/KpcsxCN.md.jpg" alt="Anfitrión Tío Sergio">
   </section>
 
   <section class="contacto-final">
@@ -177,12 +181,12 @@
   </footer>
 
   <script>
-    const texto="EL LUGAR DE LOS MAYORES ✦ ";
-    const contenedor=document.getElementById("textoCircular");
-    for(let i=0;i<texto.length;i++){
-      const letra=document.createElement("span");
-      letra.innerText=texto[i];
-      letra.style.transform=`rotate(${(i*360)/texto.length}deg)`;
+    const texto = "EL LUGAR DE LOS MAYORES ✦ ";
+    const contenedor = document.getElementById("textoCircular");
+    for (let i = 0; i < texto.length; i++) {
+      const letra = document.createElement("span");
+      letra.innerText = texto[i];
+      letra.style.transform = `rotate(${(i * 360) / texto.length}deg)`;
       contenedor.appendChild(letra);
     }
   </script>
