@@ -55,11 +55,11 @@
     }
 
     @keyframes neonLoop{
-      0%{filter:drop-shadow(0 0 25px #ff00ff) drop-shadow(0 0 40px #00ffff)}
-      25%{filter:drop-shadow(0 0 35px #ffcc66) drop-shadow(0 0 50px #00ffff)}
-      50%{filter:drop-shadow(0 0 45px #ff00ff) drop-shadow(0 0 65px #ffcc66)}
-      75%{filter:drop-shadow(0 0 35px #00ffff) drop-shadow(0 0 45px #ff00ff)}
-      100%{filter:drop-shadow(0 0 25px #ffcc66) drop-shadow(0 0 40px #00ffff)}
+      0%{filter:drop-shadow(0 0 30px #ff00ff) drop-shadow(0 0 45px #00ffff)}
+      25%{filter:drop-shadow(0 0 40px #ffcc66) drop-shadow(0 0 60px #00ffff)}
+      50%{filter:drop-shadow(0 0 60px #ff00ff) drop-shadow(0 0 80px #ffcc66)}
+      75%{filter:drop-shadow(0 0 45px #00ffff) drop-shadow(0 0 60px #ff00ff)}
+      100%{filter:drop-shadow(0 0 30px #ffcc66) drop-shadow(0 0 45px #00ffff)}
     }
 
     @keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -102,39 +102,40 @@
       line-height:1.9;margin:18px 0;
     }
 
-    /* ✅ Imagen anfitrión sin fondo polarizado */
+    /* 💥 Imagen anfitrión con neón más intenso */
     .anfitrion{text-align:center;padding:80px 20px;}
     .titulo-anfitrion{
       font-size:clamp(1.4em,4vw,2em);
       font-weight:700;margin-bottom:25px;
       color:#ffcc66;
-      text-shadow:0 0 15px #ff00ff,0 0 30px #00ffff;
+      text-shadow:0 0 20px #ff00ff,0 0 40px #00ffff,0 0 60px #ffcc66;
       letter-spacing:2px;
     }
     .img-anfitrion{
       width:min(90%,650px);
       border-radius:15px;
-      display:block;margin:auto;
-      box-shadow:0 0 35px #ff00ff,0 0 65px #00ffff,0 0 85px #ffcc66;
-      animation:pulsoMulti 6s infinite ease-in-out;
+      display:block;
+      margin:auto;
+      box-shadow:
+        0 0 60px #ff00ff,
+        0 0 90px #00ffff,
+        0 0 120px #ffcc66,
+        0 0 160px #ff00ff;
+      animation:pulsoMulti 5s infinite ease-in-out;
     }
     @keyframes pulsoMulti{
-      0%{box-shadow:0 0 30px #ff00ff,0 0 60px #00ffff}
-      50%{box-shadow:0 0 50px #ffcc66,0 0 90px #00ffff,0 0 120px #ff00ff}
-      100%{box-shadow:0 0 30px #00ffff,0 0 60px #ff00ff}
+      0%{box-shadow:0 0 50px #ff00ff,0 0 80px #00ffff,0 0 100px #ffcc66}
+      50%{box-shadow:0 0 90px #ff00ff,0 0 140px #00ffff,0 0 180px #ffcc66}
+      100%{box-shadow:0 0 50px #00ffff,0 0 80px #ff00ff,0 0 100px #ffcc66}
     }
 
     .contacto-final{text-align:center;padding:70px 20px;background:transparent;border-top:1px solid rgba(255,255,255,0.15);}
-    .contacto-final a{
-      display:block;color:#fff;font-size:1.1em;margin:8px 0;text-decoration:none;transition:.3s;
-      text-shadow:0 0 8px #ffcc66;
-    }
+    .contacto-final a{display:block;color:#fff;font-size:1.1em;margin:8px 0;text-decoration:none;transition:.3s;text-shadow:0 0 8px #ffcc66;}
     .contacto-final a:hover{color:#ffcc66;text-shadow:0 0 15px #ffcc66}
     .redes-local{display:flex;justify-content:center;gap:35px;margin-top:20px}
     .redes-local a img{width:55px;height:55px;transition:all .3s ease;filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));}
-    .redes-local a img:hover{transform:scale(1.15);filter:drop-shadow(0 0 15px #00ffff) drop-shadow(0 0 25px #ff00ff);}
+    .redes-local a img:hover{transform:scale(1.15);filter:drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 35px #ff00ff);}
 
-    /* ✅ Texto final sin fondo polarizado */
     .final-fomo{
       text-align:center;
       padding:60px 20px;
