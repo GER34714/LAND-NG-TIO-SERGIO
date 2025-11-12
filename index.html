@@ -105,6 +105,14 @@
       line-height:1.8;
     }
 
+    /* 🎵 Nuevo texto más atractivo */
+    .bloque p.descripcion {
+      font-size:1.2em;
+      color:#fff;
+      text-shadow:0 0 10px rgba(255,204,102,0.8);
+      line-height:1.9;
+    }
+
     .anfitrion{
       text-align:center;
       padding:80px 20px;
@@ -179,7 +187,6 @@
       50%{opacity:0.6;filter:brightness(1.5)}
       100%{opacity:1}
     }
-
     @keyframes brillaFomo{
       0%,100%{text-shadow:0 0 25px #ffcc66,0 0 45px #00ffff;}
       50%{text-shadow:0 0 40px #ff00ff,0 0 60px #ffcc66;}
@@ -193,12 +200,15 @@
     footer a{color:#00ffff;text-decoration:none;transition:.3s}
     footer a:hover{color:#ffcc66}
 
+    /* 📱 Ajustes móviles */
     @media(max-width:600px){
       .logo-principal{width:280px}
       .slogan-circular{width:340px;height:340px}
       .slogan-circular span{font-size:.9em;transform-origin:0 170px}
       .titulo-anfitrion{font-size:1.3em}
-      .final-fomo{font-size:1.2em}
+      .final-fomo{font-size:1.2em;line-height:1.8}
+      .final-fomo br{display:block}
+      .horarios{font-size:1.1em;white-space:nowrap}
     }
   </style>
 </head>
@@ -217,10 +227,10 @@
 
   <section class="bloque">
     <h3>🔥 La noche es de los mayores 🔥</h3>
-    <p>💃 Música en vivo • Cuarteto • Cumbia • Clásicos que te hacen mover</p>
-    <p>🍸 Tragos fríos • Amigos de siempre • Risas y buena energía</p>
-    <p>🎤 Shows exclusivos • Ambiente seguro • Pista encendida toda la noche</p>
-    <p>✨ Donde la experiencia y la alegría se mezclan con ritmo tropical</p>
+    <p class="descripcion">🎉 Un clásico de José C. Paz donde se baila, se ríe y se brinda con amigos.  
+    Cumbia, cuarteto y shows en vivo que hacen vibrar a todos.  
+    Ambiente festivo, buena música, luces que te envuelven y la mejor energía.  
+    ¡Vení a disfrutar una noche distinta, hecha para vos! 💃🍸🎤</p>
   </section>
 
   <section class="anfitrion">
@@ -243,7 +253,7 @@
   </section>
 
   <section class="final-fomo">
-    🔥 ¡<span>Te esperamos este fin de semana</span> en <span>TÍO SERGIO</span>!  
+    🔥 ¡<span>Te esperamos este fin de semana</span> en <span>TÍO SERGIO</span>!<br>
     💃 La noche más esperada está por comenzar... 🎶
   </section>
 
@@ -262,7 +272,7 @@
       contenedor.appendChild(letra);
     }
 
-    // Fade-in al hacer scroll
+    // Fade-in scroll
     const secciones = document.querySelectorAll("section");
     const mostrar = () => {
       secciones.forEach(sec=>{
