@@ -1,3 +1,4 @@
+<!-- PARTE 1/2 - HEAD + CSS -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +9,7 @@
 
   <link rel="icon" type="image/png" href="https://iili.io/KmWWSnV.md.webp" />
   <meta property="og:title" content="TÍO SERGIO™ | El lugar de los mayores 🎤💃" />
-  <meta property="og:description" content="Cumbia• Cuarteto•rock and roll• Shows en vivo y la mejor energía de la noche. Viernes y sábados desde las 22:00 hs en José C. Paz." />
+  <meta property="og:description" content="Cumbia• Cuarteto• rock and roll• Shows en vivo y la mejor energía de la noche. Viernes y sábados desde las 22:00 hs en José C. Paz." />
   <meta property="og:image" content="https://iili.io/KpcsxCN.md.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tio-sergio.onrender.com/" />
@@ -69,7 +70,6 @@
 
     @keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-    /* TEXTO CIRCULAR POR FUERA DEL LOGO */
     .slogan-circular{
       position:absolute;top:50%;left:50%;
       transform:translate(-50%, -50%);
@@ -88,7 +88,15 @@
       white-space:pre;
     }
 
-    section{text-align:center;padding:40px 20px;max-width:900px;margin:0 auto;opacity:0;transform:translateY(50px);transition:all 1s ease}
+    section{
+      text-align:center;
+      padding:40px 20px;
+      max-width:900px;
+      margin:0 auto;
+      opacity:0;
+      transform:translateY(50px);
+      transition:all 1s ease;
+    }
     section.visible{opacity:1;transform:translateY(0)}
 
     .horarios{
@@ -139,17 +147,82 @@
       100%{box-shadow:0 0 50px #00ffff,0 0 80px #ff00ff,0 0 100px #ffcc66}
     }
 
-    /* ICONOS DE REDES (55x55) */
-    .redes-local a img {
-      width:55px !important;
-      height:55px !important;
-      object-fit:contain !important;
-      border-radius:0 !important;
-      transition:.3s ease;
-      filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));
+    .evento-hoy{
+      max-width:980px;
+      margin:20px auto 10px;
+      padding:20px;
+    }
+    .evento-card{
+      background:rgba(0,0,0,0.7);
+      border-radius:18px;
+      padding:22px;
+      backdrop-filter:blur(6px);
+      box-shadow:0 0 30px rgba(255,255,255,0.06);
+    }
+    .evento-badge{
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#ff0000,#ff6600);
+      color:#fff;
+      font-weight:700;
+      letter-spacing:.6px;
+      box-shadow:0 0 18px rgba(255,0,0,.6);
+      margin-bottom:14px;
+    }
+    .evento-card h3{
+      color:#ffcc66;
+      font-size:clamp(1.5em,4vw,2.1em);
+      text-shadow:0 0 10px #ff00ff,0 0 16px #00ffff;
+      margin-bottom:10px;
+    }
+    .evento-card p{
+      margin:8px 0;
+      font-size:1.05em;
+      text-shadow:0 0 10px rgba(255,255,255,0.12);
+    }
+    .evento-img{
+      width:100%;
+      max-width:760px;
+      display:block;
+      margin:18px auto 14px;
+      border-radius:14px;
+      box-shadow:0 0 20px rgba(255,204,102,.4),0 0 35px rgba(255,0,255,.18);
+    }
+    .evento-lista{
+      display:grid;
+      gap:8px;
+      margin:14px auto;
+      max-width:760px;
+      text-align:left;
+    }
+    .evento-lista p{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:12px;
+      padding:10px 12px;
+      margin:0;
+    }
+    .evento-cta{
+      margin-top:16px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 22px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:700;
+      background:linear-gradient(90deg,#00aaff,#0066ff);
+      box-shadow:0 0 18px rgba(0,153,255,.45);
+      transition:.25s ease;
+    }
+    .evento-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(0,153,255,.7);
     }
 
-    /* Seccion contacto */
     .contacto-final {
       text-align:center;
       padding:70px 20px;
@@ -162,20 +235,39 @@
       text-decoration:none;
       text-shadow:0 0 8px #ffcc66;
     }
-    .contacto-final a:hover {
-      color:#ffcc66;
+    .contacto-final a:hover { color:#ffcc66; }
+
+    .redes-local{
+      margin-top:12px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .redes-local a img {
+      width:55px !important;
+      height:55px !important;
+      object-fit:contain !important;
+      border-radius:0 !important;
+      transition:.3s ease;
+      filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));
     }
 
-    /* YOUTUBE: SOLO PLAYER GRANDE (NO GIGANTE) */
-    .youtube-area { margin-top:40px; margin-bottom:40px; }
+    .youtube-area{
+      margin-top:40px;
+      margin-bottom:40px;
+      max-width:1100px;
+    }
     .youtube-area .yt-logo{
       width:95px;
       filter:drop-shadow(0 0 14px red);
       border-radius:10px;
     }
-    .youtube-area .video-main{
+
+    .video-main{
       width:100%;
-      max-width:860px;
+      max-width:900px;
       aspect-ratio:16/9;
       margin:24px auto 0;
       border-radius:16px;
@@ -183,10 +275,164 @@
       box-shadow:0 0 22px #ff00ff;
       background:rgba(0,0,0,0.25);
     }
-    .youtube-area .video-main iframe{
+    .video-main iframe{
       width:100%;
       height:100%;
       border:none;
+      display:block;
+    }
+
+    .yt-cards-wrap{
+      width:100%;
+      max-width:980px;
+      margin:20px auto 0;
+    }
+
+    .yt-cards-title{
+      font-size:1.05em;
+      color:#fff;
+      margin-bottom:12px;
+      text-shadow:0 0 10px rgba(255,255,255,.2);
+    }
+
+    .yt-cards{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      width:100%;
+    }
+
+    .yt-card{
+      background:rgba(0,0,0,0.60);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      text-align:left;
+      transition:.25s ease;
+      box-shadow:0 0 12px rgba(255,0,255,0.12);
+    }
+    .yt-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,204,102,0.35);
+      box-shadow:0 0 18px rgba(255,0,255,0.22);
+    }
+    .yt-card.active{
+      border-color:rgba(255,204,102,0.6);
+      box-shadow:0 0 20px rgba(255,204,102,0.2),0 0 20px rgba(255,0,255,0.14);
+    }
+
+    .yt-thumb{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      background:#111;
+      overflow:hidden;
+    }
+    .yt-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .35s ease;
+    }
+    .yt-card:hover .yt-thumb img{ transform:scale(1.04); }
+
+    .yt-play{
+      position:absolute;
+      inset:auto auto 10px 10px;
+      background:rgba(0,0,0,0.65);
+      border:1px solid rgba(255,255,255,0.2);
+      color:#fff;
+      border-radius:999px;
+      padding:5px 10px;
+      font-size:.85em;
+      font-weight:700;
+      backdrop-filter:blur(4px);
+    }
+
+    .yt-card-body{ padding:12px; }
+    .yt-card-topline{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:8px;
+    }
+    .yt-nro{
+      display:inline-flex;
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      background:rgba(255,0,0,.2);
+      border:1px solid rgba(255,0,0,.35);
+      color:#fff;
+      flex:0 0 auto;
+    }
+    .yt-badge{
+      font-size:.75em;
+      font-weight:700;
+      color:#fff;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:999px;
+      padding:4px 8px;
+    }
+
+    .yt-card-title{
+      display:block;
+      color:#ffcc66;
+      font-weight:700;
+      font-size:.98em;
+      line-height:1.25;
+      margin-bottom:6px;
+    }
+    .yt-card-desc{
+      display:block;
+      color:#ddd;
+      font-size:.88em;
+      line-height:1.3;
+      opacity:.95;
+      min-height:34px;
+    }
+
+    .yt-actions{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .yt-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      border-radius:999px;
+      padding:12px 20px;
+      font-weight:700;
+      transition:.25s ease;
+    }
+    .yt-btn-canal{
+      color:#fff;
+      background:linear-gradient(90deg,#ff0000,#d90000);
+      box-shadow:0 0 16px rgba(255,0,0,.35);
+    }
+    .yt-btn-canal:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(255,0,0,.55);
+    }
+    .yt-btn-video{
+      color:#fff;
+      background:linear-gradient(90deg,#8a2be2,#ff00ff);
+      box-shadow:0 0 16px rgba(255,0,255,.25);
+    }
+    .yt-btn-video:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(255,0,255,.45);
     }
 
     footer{
@@ -198,8 +444,46 @@
     }
     footer a{color:#00ffff;text-decoration:none;transition:.3s}
     footer a:hover{color:#ffcc66}
+
+    @media (max-width: 900px){
+      .yt-cards{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+      }
+    }
+
+    @media (max-width: 560px){
+      .evento-lista{text-align:center}
+      .yt-cards{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+      }
+      .yt-card{ border-radius:12px; }
+      .yt-card-body{ padding:10px; }
+      .yt-card-title{
+        font-size:.9em;
+        margin-bottom:4px;
+      }
+      .yt-card-desc{
+        font-size:.8em;
+        min-height:auto;
+      }
+      .yt-badge{
+        font-size:.68em;
+        padding:3px 7px;
+      }
+      .yt-play{
+        font-size:.75em;
+        padding:4px 8px;
+      }
+      .yt-actions{ gap:10px; }
+      .yt-btn{
+        width:100%;
+        max-width:340px;
+      }
+    }
   </style>
-</head>
+</head><!-- PARTE 2/2 - BODY + SCRIPT -->
 <body>
 
   <div class="fondo"></div>
@@ -215,7 +499,6 @@
 
   <section class="bloque">
     <h3>🔥 La noche es de los mayores 🔥</h3>
-
     <p class="descripcion">💥 Un clásico de la noche, donde se baila, se ríe y se disfruta al máximo.</p>
     <p class="descripcion">🎶 Cumbia • Cuarteto • rock and Roll Shows en vivo de bandas tropicales nacionales e internacionales.</p>
     <p class="descripcion">🎉 ¡Vení a conocerlo, no te lo pierdas!</p>
@@ -229,15 +512,34 @@
     <img class="img-anfitrion" src="https://iili.io/KpcsxCN.md.jpg" alt="Anfitrión Tío Sergio">
   </section>
 
-  <!-- YOUTUBE: SOLO PLAYER (AUTO CON PLAYLIST UPLOADS) -->
-  <section class="youtube-area">
+  <section class="evento-hoy">
+    <div class="evento-card">
+      <div class="evento-badge">HOY - DOMINGO 22 DE FEBRERO</div>
+      <h3>Gran fiesta santiagueña</h3>
+      <p>Invita y organiza <strong>Angel Moreno</strong> junto a <strong>Tio Sergio</strong> • <strong>A partir de las 13:00 hs</strong>.</p>
 
+      <img class="evento-img" src="https://iili.io/qF5knXn.jpg" alt="Flyer evento de hoy en Tio Sergio">
+
+      <div class="evento-lista">
+        <p>✅ Entrada sin cargo para disfrutar en familia</p>
+        <p>🕐 Inicio del evento: a partir de las 13:00 hs</p>
+        <p>🎧 DJ Montoya y mas artistas invitados</p>
+        <p>🎤 Wally Nogueras, Carla Gonzalez y La Chance Chamamecera</p>
+        <p>📍 Av. Arturo Illia 6829, Jose C. Paz (a 1 cuadra del cruce)</p>
+      </div>
+
+      <a class="evento-cta" href="https://maps.google.com/?q=Av.+Pres.+Art.+Umberto+Illia+6829,+José+C.+Paz,+Bs.+As." target="_blank" rel="noopener noreferrer">
+        📍 Ver ubicacion en el mapa
+      </a>
+    </div>
+  </section>
+
+  <section class="youtube-area">
     <h2 style="font-size:2em;color:#ffcc66;text-shadow:0 0 20px #ff00ff;margin-bottom:10px;">
       ⭐ SEGUINOS EN YOUTUBE ⭐
     </h2>
 
     <img src="https://iili.io/fA4eRNj.jpg" class="yt-logo" alt="Logo YouTube">
-
     <br><br>
 
     <button onclick="window.open('https://www.youtube.com/@elcanaldelasestrellasok?sub_confirmation=1','_blank')"
@@ -247,13 +549,105 @@
 
     <div class="video-main">
       <iframe
-        src="https://www.youtube.com/embed/videoseries?list=UURKCN_xpraIbiZU91kXA94w"
-        allow="encrypted-media"
+        id="ytPrincipal"
+        src="https://www.youtube.com/embed/HQWMW2Bl39Q"
+        title="Video principal del canal"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
         playsinline
         webkit-playsinline>
       </iframe>
     </div>
 
+    <div class="yt-cards-wrap">
+      <p class="yt-cards-title">Videos destacados del canal (tocá una tarjeta para ver el video grande arriba):</p>
+
+      <div class="yt-cards" id="ytCards">
+        <button class="yt-card active" type="button" data-video="HQWMW2Bl39Q" data-link="https://youtu.be/HQWMW2Bl39Q?si=6H5-f8wHu8YZJfdQ">
+          <div class="yt-thumb">
+            <img src="https://img.youtube.com/vi/HQWMW2Bl39Q/hqdefault.jpg" alt="Vista previa Video 1">
+            <span class="yt-play">▶ Ver</span>
+          </div>
+          <div class="yt-card-body">
+            <div class="yt-card-topline">
+              <span class="yt-nro">1</span>
+              <span class="yt-badge">Principal</span>
+            </div>
+            <span class="yt-card-title">Show en vivo destacado</span>
+            <span class="yt-card-desc">Momento principal de la noche con musica en vivo y ambiente de bailanta.</span>
+          </div>
+        </button>
+
+        <button class="yt-card" type="button" data-video="4CDES6EPZkI" data-link="https://youtu.be/4CDES6EPZkI?si=51JoeE1BuEee3UVB">
+          <div class="yt-thumb">
+            <img src="https://img.youtube.com/vi/4CDES6EPZkI/hqdefault.jpg" alt="Vista previa Video 2">
+            <span class="yt-play">▶ Ver</span>
+          </div>
+          <div class="yt-card-body">
+            <div class="yt-card-topline">
+              <span class="yt-nro">2</span>
+              <span class="yt-badge">Video</span>
+            </div>
+            <span class="yt-card-title">Noche en Tio Sergio</span>
+            <span class="yt-card-desc">Escenas del salon, pista y publico disfrutando la jornada.</span>
+          </div>
+        </button>
+
+        <button class="yt-card" type="button" data-video="Ik1PLRYR7j4" data-link="https://youtu.be/Ik1PLRYR7j4?si=9eP2WUxJyrstfXZb">
+          <div class="yt-thumb">
+            <img src="https://img.youtube.com/vi/Ik1PLRYR7j4/hqdefault.jpg" alt="Vista previa Video 3">
+            <span class="yt-play">▶ Ver</span>
+          </div>
+          <div class="yt-card-body">
+            <div class="yt-card-topline">
+              <span class="yt-nro">3</span>
+              <span class="yt-badge">Video</span>
+            </div>
+            <span class="yt-card-title">Musica y baile en vivo</span>
+            <span class="yt-card-desc">Otro momento del evento con ritmo, animacion y energia del lugar.</span>
+          </div>
+        </button>
+
+        <button class="yt-card" type="button" data-video="c-B_nCG_S7k" data-link="https://youtu.be/c-B_nCG_S7k?si=cf0MHQ6QPue7FGuE">
+          <div class="yt-thumb">
+            <img src="https://img.youtube.com/vi/c-B_nCG_S7k/hqdefault.jpg" alt="Vista previa Video 4">
+            <span class="yt-play">▶ Ver</span>
+          </div>
+          <div class="yt-card-body">
+            <div class="yt-card-topline">
+              <span class="yt-nro">4</span>
+              <span class="yt-badge">Video</span>
+            </div>
+            <span class="yt-card-title">Artistas y escenario</span>
+            <span class="yt-card-desc">Presentacion en vivo con sonido, luces y clima festivo.</span>
+          </div>
+        </button>
+
+        <button class="yt-card" type="button" data-video="5P2tqlF85eE" data-link="https://youtu.be/5P2tqlF85eE?si=gnhLqD-0NFYpuDAi">
+          <div class="yt-thumb">
+            <img src="https://img.youtube.com/vi/5P2tqlF85eE/hqdefault.jpg" alt="Vista previa Video 5">
+            <span class="yt-play">▶ Ver</span>
+          </div>
+          <div class="yt-card-body">
+            <div class="yt-card-topline">
+              <span class="yt-nro">5</span>
+              <span class="yt-badge">Video</span>
+            </div>
+            <span class="yt-card-title">Publico y diversion</span>
+            <span class="yt-card-desc">Mas momentos del canal oficial mostrando la experiencia del lugar.</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="yt-actions">
+        <a class="yt-btn yt-btn-video" id="btnVerVideoActual" href="https://youtu.be/HQWMW2Bl39Q?si=6H5-f8wHu8YZJfdQ" target="_blank" rel="noopener noreferrer">
+          ▶ Ver video actual en YouTube
+        </a>
+        <a class="yt-btn yt-btn-canal" href="https://www.youtube.com/@elcanaldelasestrellasok" target="_blank" rel="noopener noreferrer">
+          🔴 Ver mas en el canal oficial
+        </a>
+      </div>
+    </div>
   </section>
 
   <section class="contacto-final">
@@ -306,6 +700,27 @@
     };
     window.addEventListener("scroll", mostrar);
     mostrar();
+
+    const iframePrincipal = document.getElementById("ytPrincipal");
+    const cards = document.querySelectorAll(".yt-card");
+    const btnVideoActual = document.getElementById("btnVerVideoActual");
+
+    function cargarVideo(videoId, videoLink){
+      iframePrincipal.src = "https://www.youtube.com/embed/" + videoId;
+      if (btnVideoActual && videoLink) btnVideoActual.href = videoLink;
+
+      cards.forEach(c => c.classList.remove("active"));
+      const activo = document.querySelector('.yt-card[data-video="' + videoId + '"]');
+      if (activo) activo.classList.add("active");
+    }
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        const videoId = card.getAttribute("data-video");
+        const videoLink = card.getAttribute("data-link");
+        cargarVideo(videoId, videoLink);
+      });
+    });
   </script>
 
 </body>
