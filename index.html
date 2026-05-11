@@ -637,12 +637,14 @@
     <div class="video-main">
       <iframe
         id="ytPrincipal"
-        src="https://www.youtube.com/embed/mMcEde3D32Q"
+        src=""
         title="Video principal del canal"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
         playsinline
-        webkit-playsinline>
+        webkit-playsinline
+        frameborder="0"
+        loading="lazy">
       </iframe>
     </div>
 
@@ -650,66 +652,10 @@
       <p class="yt-cards-title">Videos destacados del canal (tocá una tarjeta para ver el video grande arriba):</p>
 
       <div class="yt-cards" id="ytCards">
-        <button class="yt-card active" type="button" data-video="mMcEde3D32Q" data-link="https://www.youtube.com/watch?v=mMcEde3D32Q">
-          <div class="yt-thumb">
-            <img src="https://img.youtube.com/vi/mMcEde3D32Q/hqdefault.jpg" alt="Vista previa Video 1">
-            <span class="yt-play">▶ Ver</span>
-          </div>
-          <div class="yt-card-body">
-            <div class="yt-card-topline">
-              <span class="yt-nro">1</span>
-              <span class="yt-badge">Principal</span>
-            </div>
-            <span class="yt-card-title">Noche en TÍO SERGIO</span>
-            <span class="yt-card-desc">Clima de fiesta, público presente y toda la energía del lugar en una noche bien arriba.</span>
-          </div>
-        </button>
+        <!-- Las tarjetas de videos se cargarán dinámicamente desde el JSON -->
+    </div>
 
-        <button class="yt-card" type="button" data-video="c8uisiPR75k" data-link="https://www.youtube.com/watch?v=c8uisiPR75k">
-          <div class="yt-thumb">
-            <img src="https://img.youtube.com/vi/c8uisiPR75k/hqdefault.jpg" alt="Vista previa Video 2">
-            <span class="yt-play">▶ Ver</span>
-          </div>
-          <div class="yt-card-body">
-            <div class="yt-card-topline">
-              <span class="yt-nro">2</span>
-              <span class="yt-badge">Video</span>
-            </div>
-            <span class="yt-card-title">Pista encendida</span>
-            <span class="yt-card-desc">Más escenas del salón, la música en vivo y la gente disfrutando una gran jornada.</span>
-          </div>
-        </button>
-
-        <button class="yt-card" type="button" data-video="LqA4IFqrmA4" data-link="https://www.youtube.com/watch?v=LqA4IFqrmA4">
-          <div class="yt-thumb">
-            <img src="https://img.youtube.com/vi/LqA4IFqrmA4/hqdefault.jpg" alt="Vista previa Video 3">
-            <span class="yt-play">▶ Ver</span>
-          </div>
-          <div class="yt-card-body">
-            <div class="yt-card-topline">
-              <span class="yt-nro">3</span>
-              <span class="yt-badge">Video</span>
-            </div>
-            <span class="yt-card-title">Rock and Roll en vivo</span>
-            <span class="yt-card-desc">Baile, ritmo y momentos que muestran la esencia festiva de TÍO SERGIO.</span>
-          </div>
-        </button>
-
-        <button class="yt-card" type="button" data-video="nUeQKxvwW-I" data-link="https://www.youtube.com/watch?v=nUeQKxvwW-I">
-          <div class="yt-thumb">
-            <img src="https://img.youtube.com/vi/nUeQKxvwW-I/hqdefault.jpg" alt="Vista previa Video 4">
-            <span class="yt-play">▶ Ver</span>
-          </div>
-          <div class="yt-card-body">
-            <div class="yt-card-topline">
-              <span class="yt-nro">4</span>
-              <span class="yt-badge">Video</span>
-            </div>
-            <span class="yt-card-title">Fiesta y baile en el salón</span>
-            <span class="yt-card-desc">Otra muestra del ambiente, la diversión y la experiencia que se vive cada fecha.</span>
-          </div>
-        </button>
-      </div>
+              </div>
 
       <div class="yt-actions">
         <a class="yt-btn yt-btn-video" id="btnVerVideoActual" href="https://www.youtube.com/watch?v=mMcEde3D32Q" target="_blank" rel="noopener noreferrer">
@@ -751,9 +697,41 @@
   <footer>
     © 2025 TÍO SERGIO | Diseñado por
     <a href="https://ciborg347.onrender.com" target="_blank">Ciborg 347™</a>
+    | 
+    <a href="admin/" target="_blank" style="color: #ffcc66;">🔧 Panel Admin</a>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="lib/supabase-client.js"></script>
+<script src="js/dynamic-loader.js"></script>
   <script>
+    // Inicializar el cargador dinámico
+    const dynamicLoader = new DynamicLoader();
+    
+    // Cargar datos dinámicamente cuando se carga la página
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await dynamicLoader.initialize();
+        
+        // Activar actualización automática cada 30 segundos
+        dynamicLoader.setupAutoRefresh(30000);
+        
+        // Disparar evento de contenido cargado
+        window.dispatchEvent(new CustomEvent('dynamicContentLoaded'));
+      } catch (error) {
+        console.error('Error al cargar contenido dinámico:', error);
+      }
+    });
+    
+    // Escuchar mensajes del panel admin para actualización inmediata
+    window.addEventListener('message', (event) => {
+      if (event.data.type === 'adminDataUpdated') {
+        console.log('🔄 Datos actualizados desde panel admin, recargando...');
+        dynamicLoader.reloadFromServer();
+      }
+    });
+
+    // Mantener el texto circular animado
     const texto = "EL LUGAR DE LOS MAYORES ✦ ";
     const contenedor = document.getElementById("textoCircular");
     for (let i = 0; i < texto.length; i++) {
@@ -763,6 +741,7 @@
       contenedor.appendChild(letra);
     }
 
+    // Animación de secciones al hacer scroll
     const secciones = document.querySelectorAll("section");
     const mostrar = () => {
       secciones.forEach(sec=>{
@@ -773,25 +752,24 @@
     window.addEventListener("scroll", mostrar);
     mostrar();
 
-    const iframePrincipal = document.getElementById("ytPrincipal");
-    const cards = document.querySelectorAll(".yt-card");
-    const btnVideoActual = document.getElementById("btnVerVideoActual");
-
-    function cargarVideo(videoId, videoLink){
-      iframePrincipal.src = "https://www.youtube.com/embed/" + videoId;
-      if (btnVideoActual && videoLink) btnVideoActual.href = videoLink;
-
-      cards.forEach(c => c.classList.remove("active"));
-      const activo = document.querySelector('.yt-card[data-video="' + videoId + '"]');
-      if (activo) activo.classList.add("active");
-    }
-
-    cards.forEach(card => {
-      card.addEventListener("click", () => {
-        const videoId = card.getAttribute("data-video");
-        const videoLink = card.getAttribute("data-link");
-        cargarVideo(videoId, videoLink);
-      });
+    // Esperar a que el contenido dinámico se cargue para configurar los videos
+    window.addEventListener('dynamicContentLoaded', () => {
+      console.log('Contenido dinámico completamente cargado');
+      
+      // Agregar botón de forzar recarga para debugging
+      if (window.location.hostname === 'localhost') {
+        const forceReloadBtn = document.createElement('button');
+        forceReloadBtn.textContent = '🔄 Forzar Recarga';
+        forceReloadBtn.style.cssText = `
+          position: fixed; top: 10px; right: 10px; 
+          background: red; color: white; 
+          padding: 10px; border: none; 
+          border-radius: 5px; cursor: pointer;
+          z-index: 9999;
+        `;
+        forceReloadBtn.onclick = () => dynamicLoader.forceServerReload();
+        document.body.appendChild(forceReloadBtn);
+      }
     });
   </script>
 
