@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - TÍO SERGIO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0f0a 0%, #000 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            color: #ffcc66;
+            font-size: 1.8em;
+            text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+        }
+        
+        .btn-logout {
+            background: linear-gradient(90deg, #ff0000, #ff6600);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+        
+        .btn-back-site {
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .btn-back-site:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 24px;
+            border-radius: 10px 10px 0 0;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            border-color: transparent;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-section {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-section h3 {
+            color: #ffcc66;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffcc66;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffcc66;
+            box-shadow: 0 0 15px rgba(255, 204, 102, 0.3);
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .btn-save {
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+        
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+        }
+        
+        .btn-cancel {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 30px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .video-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .video-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .video-info {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .video-preview {
+            width: 120px;
+            height: 90px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-delete {
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-delete:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            color: #51cf66;
+        }
+        
+        .message.error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #ff6b6b;
+        }
+        
+        /* Modal para agregar videos */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a0f0a 0%, #000 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .modal-header h2 {
+            color: #ffcc66;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        
+        .modal-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 0, 0, 0.3);
+            border-color: rgba(255, 0, 0, 0.5);
+            transform: rotate(90deg);
+        }
+        
+        .url-input-section {
+            margin-bottom: 25px;
+        }
+        
+        .url-input-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .url-input-wrapper input {
+            width: 100%;
+            padding: 15px 50px 15px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .url-input-wrapper input:focus {
+            outline: none;
+            border-color: #ffcc66;
+            box-shadow: 0 0 20px rgba(255, 204, 102, 0.3);
+        }
+        
+        .url-input-wrapper .loading-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+        }
+        
+        .url-input-wrapper.loading .loading-icon {
+            display: block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+        
+        .video-preview-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .video-preview-section.active {
+            display: block;
+        }
+        
+        .video-preview-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .video-details {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .video-details input,
+        .video-details textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+        
+        .video-details textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .video-details input:focus,
+        .video-details textarea:focus {
+            outline: none;
+            border-color: #ffcc66;
+            box-shadow: 0 0 15px rgba(255, 204, 102, 0.3);
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+        
+        .btn-cancel-modal {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cancel-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-add-video {
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-add-video:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+        }
+        
+        .btn-add-video:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .error-message {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            color: #ff6b6b;
+            display: none;
+        }
+        
+        .success-message {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            color: #51cf66;
+            display: none;
+        }
+        
+        /* Mejoras al botón de agregar video */
+        .btn-add-video-main {
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
+        }
+        
+        .btn-add-video-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 0, 255, 0.4);
+        }
+        
+        .btn-add-video-main::before {
+            content: "➕";
+            font-size: 20px;
+        }
+        
+        /* Estilos para gestión de imágenes */
+        .imagenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .imagen-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .imagen-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 0, 255, 0.2);
+            border-color: rgba(255, 204, 102, 0.3);
+        }
+        
+        .imagen-preview {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .imagen-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .imagen-preview .placeholder {
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .imagen-info {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .imagen-info label {
+            color: #ffcc66;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .imagen-info input {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        
+        .imagen-info input:focus {
+            outline: none;
+            border-color: #ffcc66;
+            box-shadow: 0 0 15px rgba(255, 204, 102, 0.3);
+        }
+        
+        .imagen-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn-preview-image {
+            background: linear-gradient(90deg, #0099ff, #0066cc);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-preview-image:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
+        }
+        
+        .btn-save-image {
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-save-image:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .video-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .video-preview {
+                margin: 0 auto;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .video-preview-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .modal-actions button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="btn-back-site" onclick="goToSite()" title="Ir al sitio principal">
+                🏠 Sitio Web
+            </button>
+            <h1>🎛️ Panel de Administración - TÍO SERGIO</h1>
+        </div>
+        <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+    </div>
+    
+    <div class="container">
+        <div class="message" id="message"></div>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('general')">Información General</button>
+            <button class="tab-btn" onclick="showTab('programacion')">📅 Programación</button>
+            <button class="tab-btn" onclick="showTab('videos')">Videos de YouTube</button>
+            <button class="tab-btn" onclick="showTab('imagenes')">🖼️ Imágenes</button>
+            <button class="tab-btn" onclick="showTab('secciones')">Secciones del Sitio</button>
+        </div>
+        
+        <!-- Tab: Información General -->
+        <div id="general" class="tab-content active">
+            <div class="form-section">
+                <h3>Información Básica del Sitio</h3>
+                <form id="generalForm">
+                    <div class="form-group">
+                        <label for="titulo">Título Principal</label>
+                        <input type="text" id="titulo" name="titulo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horarios">Horarios</label>
+                        <input type="text" id="horarios" name="horarios" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-save">Guardar Cambios</button>
+                    <button type="button" class="btn-cancel" onclick="loadData()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Tab: Programación -->
+        <div id="programacion" class="tab-content">
+            <div class="form-section">
+                <h3>Configuración de Programación Semanal</h3>
+                <form id="programacionConfigForm">
+                    <div class="form-group">
+                        <label for="progTitulo">Título de la Programación</label>
+                        <input type="text" id="progTitulo" name="progTitulo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="progDescripcion">Descripción General</label>
+                        <textarea id="progDescripcion" name="progDescripcion" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="progDetalles">Detalles Adicionales</label>
+                        <textarea id="progDetalles" name="progDetalles" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-save">Guardar Configuración</button>
+                </form>
+            </div>
+            
+            <div class="form-section">
+                <h3>Eventos de la Programación</h3>
+                <div id="eventosList" class="video-list">
+                    <!-- Los eventos se cargarán dinámicamente -->
+                </div>
+                
+                <button class="btn-add-video-main" onclick="openEventoModal()">➕ Agregar Nuevo Evento</button>
+            </div>
+        </div>
+        
+        <!-- Tab: Videos de YouTube -->
+        <div id="videos" class="tab-content">
+            <div class="form-section">
+                <h3>Configuración de YouTube</h3>
+                <form id="youtubeConfigForm">
+                    <div class="form-group">
+                        <label for="canal">URL del Canal</label>
+                        <input type="url" id="canal" name="canal" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="suscripcion">URL de Suscripción</label>
+                        <input type="url" id="suscripcion" name="suscripcion" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-save">Guardar Configuración</button>
+                </form>
+            </div>
+            
+            <div class="form-section">
+                <h3>Videos Destacados</h3>
+                <div class="video-list" id="videoList"></div>
+                
+                <button class="btn-add-video-main" onclick="openVideoModal()">Agregar Nuevo Video</button>
+            </div>
+        </div>
+        
+        <!-- Tab: Imágenes -->
+        <div id="imagenes" class="tab-content">
+            <div class="form-section">
+                <h3>🖼️ Gestión de Imágenes del Sitio</h3>
+                <p style="color: #aaa; margin-bottom: 20px;">
+                    Aquí puedes editar todas las imágenes del sitio. Pega las URLs de las nuevas imágenes y se actualizarán automáticamente.
+                </p>
+                
+                <div class="imagenes-grid" id="imagenesGrid">
+                    <!-- Las imágenes se cargarán dinámicamente -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab: Secciones del Sitio -->
+        <div id="secciones" class="tab-content">
+            <div class="form-section">
+                <h3>Sección Principal</h3>
+                <form id="seccionPrincipalForm">
+                    <div class="form-group">
+                        <label for="principalTitulo">Título</label>
+                        <input type="text" id="principalTitulo" name="principalTitulo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="principalDesc">Descripciones (una por línea)</label>
+                        <textarea id="principalDesc" name="principalDesc" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-save">Guardar Cambios</button>
+                </form>
+            </div>
+            
+            <div class="form-section">
+                <h3>Evento Destacado</h3>
+                <form id="eventoDestacadoForm">
+                    <div class="form-group">
+                        <label for="eventoTitulo">Título</label>
+                        <input type="text" id="eventoTitulo" name="eventoTitulo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventoSubtitulo">Subtítulo</label>
+                        <input type="text" id="eventoSubtitulo" name="eventoSubtitulo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventoDesc">Descripciones (una por línea)</label>
+                        <textarea id="eventoDesc" name="eventoDesc" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventoHorario">Horario</label>
+                        <input type="text" id="eventoHorario" name="eventoHorario" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-save">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para agregar videos -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎬 Agregar Nuevo Video</h2>
+                <button class="modal-close" onclick="closeVideoModal()">✕</button>
+            </div>
+            
+            <div class="error-message" id="modalError"></div>
+            <div class="success-message" id="modalSuccess"></div>
+            
+            <div class="url-input-section">
+                <label for="videoUrl">📹 URL del Video de YouTube</label>
+                <div class="url-input-wrapper" id="urlInputWrapper">
+                    <input 
+                        type="url" 
+                        id="videoUrl" 
+                        placeholder="Pega aquí la URL del video de YouTube..."
+                        autocomplete="off"
+                    >
+                    <span class="loading-icon">⏳</span>
+                </div>
+            </div>
+            
+            <div class="video-preview-section" id="videoPreviewSection">
+                <h3>📋 Vista Previa del Video</h3>
+                <div class="video-preview-container">
+                    <div class="video-thumbnail">
+                        <img id="videoThumbnail" src="" alt="Vista previa del video">
+                        <span class="video-duration" id="videoDuration">00:00</span>
+                    </div>
+                    <div class="video-details">
+                        <input 
+                            type="text" 
+                            id="videoTitle" 
+                            placeholder="Título del video..."
+                            maxlength="100"
+                        >
+                        <textarea 
+                            id="videoDescription" 
+                            placeholder="Descripción del video..."
+                            maxlength="200"
+                            rows="3"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn-cancel-modal" onclick="closeVideoModal()">Cancelar</button>
+                <button class="btn-add-video" id="btnAddVideo" onclick="addVideoFromModal()" disabled>
+                    Agregar Video
+                </button>
+            </div>
+        </div>
+    
+    <!-- Modal para agregar eventos -->
+    <div id="eventoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📅 Agregar Nuevo Evento</h2>
+                <button class="modal-close" onclick="closeEventoModal()">✕</button>
+            </div>
+            
+            <div class="error-message" id="eventoModalError"></div>
+            
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="eventoEmoji">Emoji del Evento</label>
+                    <input type="text" id="eventoEmoji" placeholder="🎸" maxlength="5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventoTitulo">Título del Evento</label>
+                    <input type="text" id="eventoTitulo" placeholder="Ej: Sábados de 22:00 a 06:00 hs" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventoDescripcion">Descripción del Evento</label>
+                    <textarea id="eventoDescripcion" placeholder="Describe el evento..." rows="3" required></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn-cancel-modal" onclick="closeEventoModal()">Cancelar</button>
+                <button class="btn-add-video" onclick="addEventoFromModal()">Agregar Evento</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../lib/supabase-client.js"></script>
+<script src="security.js"></script>
+<script src="../api/admin.js"></script>
+    <script>
+        let currentData = {};
+        
+        // Inicializar AdminAPI
+        window.adminAPI = new AdminAPI();
+        
+        // Verificar sesión
+        function checkSession() {
+            return window.securityManager.checkCurrentSession();
+        }
+        
+        // Cerrar sesión
+        function logout() {
+            window.securityManager.logout();
+            window.location.href = 'login.html';
+        }
+        
+        // Ir al sitio principal
+        function goToSite() {
+            window.open('../index.html', '_blank');
+        }
+        
+        // Cambiar tabs
+        function showTab(tabName) {
+            // Ocultar todos los tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Desactivar todos los botones
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar tab seleccionado
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Mostrar mensaje
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Cargar datos
+        async function loadData() {
+            try {
+                currentData = await window.adminAPI.loadData();
+                
+                // Cargar información general
+                document.getElementById('titulo').value = currentData.sitio.titulo || '';
+                document.getElementById('descripcion').value = currentData.sitio.descripcion || '';
+                document.getElementById('horarios').value = currentData.sitio.horarios || '';
+                document.getElementById('direccion').value = currentData.sitio.direccion || '';
+                document.getElementById('telefono').value = currentData.sitio.telefono || '';
+                document.getElementById('email').value = currentData.sitio.email || '';
+                
+                // Cargar configuración YouTube
+                document.getElementById('canal').value = currentData.youtube.canal || '';
+                document.getElementById('suscripcion').value = currentData.youtube.suscripcion || '';
+                
+                // Cargar programación
+                document.getElementById('progTitulo').value = currentData.secciones.programacion?.titulo || '';
+                document.getElementById('progDescripcion').value = currentData.secciones.programacion?.descripcion || '';
+                document.getElementById('progDetalles').value = currentData.secciones.programacion?.detalles || '';
+                
+                // Cargar secciones
+                document.getElementById('principalTitulo').value = currentData.secciones.principal.titulo || '';
+                document.getElementById('principalDesc').value = currentData.secciones.principal.descripcion.join('\n') || '';
+                
+                document.getElementById('eventoTitulo').value = currentData.secciones.evento_destacado.titulo || '';
+                document.getElementById('eventoSubtitulo').value = currentData.secciones.evento_destacado.subtitulo || '';
+                document.getElementById('eventoDesc').value = currentData.secciones.evento_destacado.descripcion.join('\n') || '';
+                document.getElementById('eventoHorario').value = currentData.secciones.evento_destacado.horario || '';
+                
+                // Cargar videos
+                renderVideos();
+                
+                // Cargar programación
+                renderProgramacion();
+                
+                // Cargar imágenes
+                renderImagenes();
+                
+            } catch (error) {
+                showMessage('Error al cargar los datos: ' + error.message, 'error');
+            }
+        }
+        
+        // Renderizar videos
+        function renderVideos() {
+            const videoList = document.getElementById('videoList');
+            videoList.innerHTML = '';
+            
+            currentData.youtube.videos.forEach((video, index) => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.innerHTML = `
+                    <div class="video-info">
+                        <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.titulo}" class="video-preview">
+                        <div>
+                            <strong>${video.titulo}</strong><br>
+                            <small>${video.descripcion}</small><br>
+                            <small>ID: ${video.id}</small>
+                        </div>
+                    </div>
+                    <button class="btn-delete" onclick="deleteVideo(${index})">Eliminar</button>
+                `;
+                videoList.appendChild(videoItem);
+            });
+        }
+        
+        // Renderizar programación
+        function renderProgramacion() {
+            const eventosList = document.getElementById('eventosList');
+            eventosList.innerHTML = '';
+            
+            const eventos = currentData.secciones.programacion?.eventos || [];
+            
+            eventos.forEach((evento, index) => {
+                const eventoItem = document.createElement('div');
+                eventoItem.className = 'video-item';
+                eventoItem.innerHTML = `
+                    <div class="video-info">
+                        <div style="font-size: 2em; margin-bottom: 10px;">${evento.emoji}</div>
+                        <div>
+                            <strong>${evento.titulo}</strong><br>
+                            <small>${evento.descripcion}</small>
+                        </div>
+                    </div>
+                    <button class="btn-delete" onclick="deleteEvento(${index})">Eliminar</button>
+                `;
+                eventosList.appendChild(eventoItem);
+            });
+        }
+        
+        // Renderizar imágenes
+        function renderImagenes() {
+            const imagenesGrid = document.getElementById('imagenesGrid');
+            imagenesGrid.innerHTML = '';
+            
+            const nombresImagenes = {
+                'favicon': '🌐 Favicon (Icono de la pestaña)',
+                'og_image': '📱 Imagen para Redes Sociales',
+                'fondo': '🎨 Imagen de Fondo Principal',
+                'logo_principal': '🎪 Logo Principal del Sitio',
+                'anfitrion': '👤 Foto del Anfitrión (Sergio)',
+                'evento_destacado': '🎸 Imagen del Evento Destacado',
+                'youtube_logo': '📺 Logo de YouTube'
+            };
+            
+            Object.entries(currentData.imagenes).forEach(([key, url]) => {
+                const imagenItem = document.createElement('div');
+                imagenItem.className = 'imagen-item';
+                
+                imagenItem.innerHTML = `
+                    <div class="imagen-preview">
+                        ${url ? `<img src="${url}" alt="${nombresImagenes[key] || key}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="placeholder" style="display: none;">❌ Imagen no disponible</div>` : 
+                        '<div class="placeholder">📷 Sin imagen</div>'}
+                    </div>
+                    <div class="imagen-info">
+                        <label>${nombresImagenes[key] || key}</label>
+                        <input type="url" id="img_${key}" value="${url}" placeholder="https://ejemplo.com/imagen.jpg">
+                    </div>
+                    <div class="imagen-actions">
+                        <button class="btn-preview-image" onclick="previewImage('${key}')">👁️ Vista Previa</button>
+                        <button class="btn-save-image" onclick="saveImage('${key}')">💾 Guardar</button>
+                    </div>
+                `;
+                
+                imagenesGrid.appendChild(imagenItem);
+            });
+        }
+        
+        // Agregar video
+        function addVideo() {
+            const videoId = prompt('Ingrese el ID del video de YouTube:');
+            if (!videoId) return;
+            
+            const titulo = prompt('Ingrese el título del video:');
+            if (!titulo) return;
+            
+            const descripcion = prompt('Ingrese la descripción del video:');
+            if (!descripcion) return;
+            
+            const newVideo = {
+                id: videoId,
+                titulo: titulo,
+                descripcion: descripcion,
+                enlace: `https://www.youtube.com/watch?v=${videoId}`,
+                activo: false
+            };
+            
+            currentData.youtube.videos.push(newVideo);
+            renderVideos();
+            showMessage('Video agregado. No olvide guardar los cambios.', 'success');
+        }
+        
+        // Eliminar video
+        function deleteVideo(index) {
+            if (confirm('¿Está seguro de eliminar este video?')) {
+                currentData.youtube.videos.splice(index, 1);
+                renderVideos();
+                showMessage('Video eliminado. No olvide guardar los cambios.', 'success');
+            }
+        }
+        
+        // Guardar información general
+        document.getElementById('generalForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            currentData.sitio.titulo = document.getElementById('titulo').value;
+            currentData.sitio.descripcion = document.getElementById('descripcion').value;
+            currentData.sitio.horarios = document.getElementById('horarios').value;
+            currentData.sitio.direccion = document.getElementById('direccion').value;
+            currentData.sitio.telefono = document.getElementById('telefono').value;
+            currentData.sitio.email = document.getElementById('email').value;
+            
+            try {
+                await window.adminAPI.saveData(currentData);
+                showMessage('Información guardada correctamente', 'success');
+            } catch (error) {
+                showMessage('Error al guardar: ' + error.message, 'error');
+            }
+        });
+        
+        // Guardar configuración YouTube
+        document.getElementById('youtubeConfigForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            currentData.youtube.canal = document.getElementById('canal').value;
+            currentData.youtube.suscripcion = document.getElementById('suscripcion').value;
+            
+            try {
+                await window.adminAPI.saveData(currentData);
+                showMessage('Configuración de YouTube guardada', 'success');
+                
+                // Notificar al sitio principal para que se actualice
+                if (window.opener) {
+                    window.opener.postMessage({ type: 'adminDataUpdated' }, '*');
+                }
+            } catch (error) {
+                showMessage('Error al guardar: ' + error.message, 'error');
+            }
+        });
+        
+        // Guardar programación
+        document.getElementById('programacionConfigForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!currentData.secciones.programacion) {
+                currentData.secciones.programacion = {};
+            }
+            
+            currentData.secciones.programacion.titulo = document.getElementById('progTitulo').value;
+            currentData.secciones.programacion.descripcion = document.getElementById('progDescripcion').value;
+            currentData.secciones.programacion.detalles = document.getElementById('progDetalles').value;
+            
+            try {
+                await window.adminAPI.saveData(currentData);
+                showMessage('Configuración de programación guardada', 'success');
+            } catch (error) {
+                showMessage('Error al guardar: ' + error.message, 'error');
+            }
+        });
+        
+        // Guardar secciones
+        document.getElementById('seccionPrincipalForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            currentData.secciones.principal.titulo = document.getElementById('principalTitulo').value;
+            currentData.secciones.principal.descripcion = document.getElementById('principalDesc').value.split('\n').filter(d => d.trim());
+            
+            try {
+                await window.adminAPI.saveData(currentData);
+                showMessage('Información general guardada', 'success');
+                
+                // Notificar al sitio principal para que se actualice
+                if (window.opener) {
+                    window.opener.postMessage({ type: 'adminDataUpdated' }, '*');
+                }
+            } catch (error) {
+                showMessage('Error al guardar: ' + error.message, 'error');
+            }
+        });
+        
+        document.getElementById('eventoDestacadoForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            currentData.secciones.evento_destacado.titulo = document.getElementById('eventoTitulo').value;
+            currentData.secciones.evento_destacado.subtitulo = document.getElementById('eventoSubtitulo').value;
+            currentData.secciones.evento_destacado.descripcion = document.getElementById('eventoDesc').value.split('\n').filter(d => d.trim());
+            currentData.secciones.evento_destacado.horario = document.getElementById('eventoHorario').value;
+            
+            try {
+                await window.adminAPI.saveData(currentData);
+                showMessage('Evento destacado guardado', 'success');
+            } catch (error) {
+                showMessage('Error al guardar: ' + error.message, 'error');
+            }
+        });
+        
+        // Funciones del modal de videos
+        let currentVideoData = null;
+        
+        // Abrir modal
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.add('active');
+            resetModal();
+            document.getElementById('videoUrl').focus();
+        }
+        
+        // Cerrar modal
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('active');
+            resetModal();
+        }
+        
+        // Resetear modal
+        function resetModal() {
+            document.getElementById('videoUrl').value = '';
+            document.getElementById('videoTitle').value = '';
+            document.getElementById('videoDescription').value = '';
+            document.getElementById('videoThumbnail').src = '';
+            document.getElementById('videoDuration').textContent = '00:00';
+            document.getElementById('videoPreviewSection').classList.remove('active');
+            document.getElementById('btnAddVideo').disabled = true;
+            document.getElementById('modalError').style.display = 'none';
+            document.getElementById('modalSuccess').style.display = 'none';
+            document.getElementById('urlInputWrapper').classList.remove('loading');
+            currentVideoData = null;
+        }
+        
+        // Manejar cambio en la URL del video
+        document.getElementById('videoUrl').addEventListener('input', async function(e) {
+            const url = e.target.value.trim();
+            
+            if (url.length === 0) {
+                resetModal();
+                return;
+            }
+            
+            // Validar URL de YouTube
+            if (!isValidYouTubeURL(url)) {
+                return;
+            }
+            
+            // Extraer ID del video
+            const videoId = extractYouTubeID(url);
+            if (!videoId) {
+                return;
+            }
+            
+            // Mostrar loading
+            document.getElementById('urlInputWrapper').classList.add('loading');
+            
+            try {
+                // Obtener información del video
+                const videoInfo = await getYouTubeVideoInfo(videoId);
+                
+                // Mostrar preview
+                showVideoPreview(videoInfo);
+                
+            } catch (error) {
+                console.error('Error al obtener información del video:', error);
+                document.getElementById('modalError').textContent = 'No se pudo obtener información del video. Verifica la URL.';
+                document.getElementById('modalError').style.display = 'block';
+            } finally {
+                document.getElementById('urlInputWrapper').classList.remove('loading');
+            }
+        });
+        
+        // Validar URL de YouTube
+        function isValidYouTubeURL(url) {
+            const patterns = [
+                /^https?:\/\/(www\.)?youtube\.com\/watch\?v=[\w-]+/,
+                /^https?:\/\/(www\.)?youtu\.be\/[\w-]+/,
+                /^https?:\/\/(www\.)?youtube\.com\/embed\/[\w-]+/
+            ];
+            
+            return patterns.some(pattern => pattern.test(url));
+        }
+        
+        // Extraer ID de YouTube
+        function extractYouTubeID(url) {
+            const patterns = [
+                /youtube\.com\/watch\?v=([\w-]+)/,
+                /youtu\.be\/([\w-]+)/,
+                /youtube\.com\/embed\/([\w-]+)/
+            ];
+            
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) {
+                    return match[1];
+                }
+            }
+            
+            return null;
+        }
+        
+        // Obtener información del video de YouTube
+        async function getYouTubeVideoInfo(videoId) {
+            // Usar la API de oEmbed para obtener información básica
+            const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
+            
+            try {
+                const response = await fetch(oembedUrl);
+                if (!response.ok) {
+                    throw new Error('Video no encontrado');
+                }
+                
+                const data = await response.json();
+                
+                return {
+                    id: videoId,
+                    title: data.title,
+                    description: data.author_name || '',
+                    thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+                    url: `https://www.youtube.com/watch?v=${videoId}`
+                };
+                
+            } catch (error) {
+                // Si falla oEmbed, usar información básica
+                return {
+                    id: videoId,
+                    title: `Video ${videoId}`,
+                    description: '',
+                    thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+                    url: `https://www.youtube.com/watch?v=${videoId}`
+                };
+            }
+        }
+        
+        // Mostrar vista previa del video
+        function showVideoPreview(videoInfo) {
+            currentVideoData = videoInfo;
+            
+            // Actualizar imagen
+            document.getElementById('videoThumbnail').src = videoInfo.thumbnail;
+            
+            // Actualizar título y descripción
+            document.getElementById('videoTitle').value = videoInfo.title;
+            document.getElementById('videoDescription').value = videoInfo.description;
+            
+            // Mostrar sección de preview
+            document.getElementById('videoPreviewSection').classList.add('active');
+            
+            // Habilitar botón de agregar
+            document.getElementById('btnAddVideo').disabled = false;
+            
+            // Ocultar mensajes de error
+            document.getElementById('modalError').style.display = 'none';
+        }
+        
+        // Agregar video desde el modal
+        async function addVideoFromModal() {
+            if (!currentVideoData) {
+                document.getElementById('modalError').textContent = 'Primero ingresa una URL válida de YouTube.';
+                document.getElementById('modalError').style.display = 'block';
+                return;
+            }
+            
+            // Obtener datos del formulario
+            const title = document.getElementById('videoTitle').value.trim();
+            const description = document.getElementById('videoDescription').value.trim();
+            
+            if (!title) {
+                document.getElementById('modalError').textContent = 'El título es obligatorio.';
+                document.getElementById('modalError').style.display = 'block';
+                return;
+            }
+            
+            // Crear objeto del video - EL ÚLTIMO AGREGADO SERÁ EL PRINCIPAL
+            const newVideo = {
+                id: currentVideoData.id,
+                titulo: title,
+                descripcion: description || 'Video destacado de TÍO SERGIO',
+                enlace: currentVideoData.url,
+                activo: true  // El nuevo video se vuelve principal
+            };
+            
+            try {
+                // Desactivar todos los videos existentes
+                currentData.youtube.videos.forEach(video => {
+                    video.activo = false;
+                });
+                
+                // Agregar el nuevo video al principio (como principal)
+                currentData.youtube.videos.unshift(newVideo);
+                
+                // Limitar a máximo 8 videos (opcional)
+                if (currentData.youtube.videos.length > 8) {
+                    currentData.youtube.videos = currentData.youtube.videos.slice(0, 8);
+                }
+                
+                // Guardar datos
+                await window.adminAPI.saveData(currentData);
+                
+                // Actualizar vista
+                renderVideos();
+                
+                // Actualizar el sitio principal dinámicamente
+                updateSiteVideos();
+                
+                // Mostrar éxito
+                document.getElementById('modalSuccess').textContent = '✅ Video agregado como principal correctamente';
+                document.getElementById('modalSuccess').style.display = 'block';
+                
+                // Cerrar modal después de 2 segundos
+                setTimeout(() => {
+                    closeVideoModal();
+                }, 2000);
+                
+            } catch (error) {
+                document.getElementById('modalError').textContent = 'Error al agregar el video: ' + error.message;
+                document.getElementById('modalError').style.display = 'block';
+            }
+        }
+        
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('videoModal');
+                if (modal.classList.contains('active')) {
+                    closeVideoModal();
+                }
+            }
+        });
+        
+        // Cerrar modal haciendo clic fuera
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+        
+        // Preview de imagen
+        function previewImage(key) {
+            const url = document.getElementById(`img_${key}`).value.trim();
+            if (!url) {
+                showMessage('Debes ingresar una URL válida', 'error');
+                return;
+            }
+            
+            window.open(url, '_blank');
+        }
+        
+        // Guardar imagen
+        async function saveImage(key) {
+            const url = document.getElementById(`img_${key}`).value.trim();
+            
+            if (!url) {
+                showMessage('Debes ingresar una URL válida', 'error');
+                return;
+            }
+            
+            // Validar URL
+            try {
+                new URL(url);
+            } catch {
+                showMessage('La URL no es válida', 'error');
+                return;
+            }
+            
+            try {
+                // Actualizar datos
+                currentData.imagenes[key] = url;
+                
+                // Guardar en JSON
+                await window.adminAPI.saveData(currentData);
+                
+                // Actualizar vista previa
+                renderImagenes();
+                
+                // Actualizar sitio principal dinámicamente
+                updateSiteImages();
+                
+                showMessage('✅ Imagen actualizada correctamente', 'success');
+                
+            } catch (error) {
+                showMessage('Error al guardar imagen: ' + error.message, 'error');
+            }
+        }
+        
+        // Actualizar imágenes en el sitio principal
+        function updateSiteImages() {
+            // Actualizar favicon
+            const favicon = document.querySelector('link[rel="icon"]');
+            if (favicon && currentData.imagenes.favicon) {
+                favicon.href = currentData.imagenes.favicon;
+            }
+            
+            // Actualizar meta imágenes
+            const ogImage = document.querySelector('meta[property="og:image"]');
+            if (ogImage && currentData.imagenes.og_image) {
+                ogImage.content = currentData.imagenes.og_image;
+            }
+            
+            const twitterImage = document.querySelector('meta[name="twitter:image"]');
+            if (twitterImage && currentData.imagenes.og_image) {
+                twitterImage.content = currentData.imagenes.og_image;
+            }
+            
+            // Actualizar fondo
+            const fondo = document.querySelector('.fondo');
+            if (fondo && currentData.imagenes.fondo) {
+                fondo.style.backgroundImage = `url('${currentData.imagenes.fondo}')`;
+            }
+            
+            // Actualizar logo principal
+            const logoPrincipal = document.querySelector('.logo-principal');
+            if (logoPrincipal && currentData.imagenes.logo_principal) {
+                logoPrincipal.src = currentData.imagenes.logo_principal;
+            }
+            
+            // Actualizar imagen del anfitrión
+            const imgAnfitrion = document.querySelector('.img-anfitrion');
+            if (imgAnfitrion && currentData.imagenes.anfitrion) {
+                imgAnfitrion.src = currentData.imagenes.anfitrion;
+            }
+            
+            // Actualizar imagen del evento destacado
+            const eventoImg = document.querySelector('.rockera-img-wrap img');
+            if (eventoImg && currentData.imagenes.evento_destacado) {
+                eventoImg.src = currentData.imagenes.evento_destacado;
+            }
+            
+            // Actualizar logo de YouTube
+            const ytLogo = document.querySelector('.yt-logo');
+            if (ytLogo && currentData.imagenes.youtube_logo) {
+                ytLogo.src = currentData.imagenes.youtube_logo;
+            }
+        }
+        
+        // Actualizar videos en el sitio principal
+        function updateSiteVideos() {
+            // Actualizar el iframe principal
+            const iframePrincipal = window.opener?.document.getElementById('ytPrincipal');
+            if (iframePrincipal && currentData.youtube.videos.length > 0) {
+                const videoActivo = currentData.youtube.videos.find(v => v.activo) || currentData.youtube.videos[0];
+                iframePrincipal.src = `https://www.youtube.com/embed/${videoActivo.id}?rel=0&modestbranding=1`;
+                
+                // Actualizar botón de ver video actual
+                const btnVideoActual = window.opener?.document.getElementById('btnVerVideoActual');
+                if (btnVideoActual) {
+                    btnVideoActual.href = videoActivo.enlace;
+                }
+            }
+            
+            // Disparar evento para que el sitio principal se actualice
+            if (window.opener) {
+                window.opener.postMessage({
+                    type: 'videosUpdated',
+                    data: currentData.youtube.videos
+                }, '*');
+            }
+        }
+        
+        // Funciones del modal de eventos
+        function openEventoModal() {
+            const modal = document.getElementById('eventoModal');
+            modal.classList.add('active');
+            resetEventoModal();
+            document.getElementById('eventoEmoji').focus();
+        }
+        
+        function closeEventoModal() {
+            const modal = document.getElementById('eventoModal');
+            modal.classList.remove('active');
+            resetEventoModal();
+        }
+        
+        function resetEventoModal() {
+            document.getElementById('eventoEmoji').value = '';
+            document.getElementById('eventoTitulo').value = '';
+            document.getElementById('eventoDescripcion').value = '';
+            document.getElementById('eventoModalError').style.display = 'none';
+        }
+        
+        function addEventoFromModal() {
+            const emoji = document.getElementById('eventoEmoji').value.trim();
+            const titulo = document.getElementById('eventoTitulo').value.trim();
+            const descripcion = document.getElementById('eventoDescripcion').value.trim();
+            
+            if (!emoji || !titulo || !descripcion) {
+                document.getElementById('eventoModalError').textContent = 'Todos los campos son obligatorios';
+                document.getElementById('eventoModalError').style.display = 'block';
+                return;
+            }
+            
+            // Agregar evento a la programación
+            if (!currentData.secciones.programacion) {
+                currentData.secciones.programacion = {};
+            }
+            if (!currentData.secciones.programacion.eventos) {
+                currentData.secciones.programacion.eventos = [];
+            }
+            
+            currentData.secciones.programacion.eventos.push({
+                emoji: emoji,
+                titulo: titulo,
+                descripcion: descripcion
+            });
+            
+            // Guardar y actualizar
+            window.adminAPI.saveData(currentData).then(() => {
+                showMessage('Evento agregado correctamente', 'success');
+                closeEventoModal();
+                renderProgramacion();
+            }).catch(error => {
+                showMessage('Error al agregar evento: ' + error.message, 'error');
+            });
+        }
+        
+        function deleteEvento(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este evento?')) {
+                currentData.secciones.programacion.eventos.splice(index, 1);
+                
+                window.adminAPI.saveData(currentData).then(() => {
+                    showMessage('Evento eliminado correctamente', 'success');
+                    renderProgramacion();
+                }).catch(error => {
+                    showMessage('Error al eliminar evento: ' + error.message, 'error');
+                });
+            }
+        }
+        
+        // Inicializar
+        if (checkSession()) {
+            loadData();
+        } else {
+            // Redirigir al login si no hay sesión activa
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
